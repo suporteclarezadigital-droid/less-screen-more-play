@@ -4,25 +4,357 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#214c3b">
-  <meta name="description" content="A practical guide for parents and caregivers who want healthier digital habits, more guidance and more room for family connection.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Less Screen, More Play — Make Room for More">
-  <meta property="og:description" content="Healthier digital habits start with guidance, small steps and time together.">
-  <meta property="og:image" content="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-1.webp">
+  <meta name="description" content="A practical guide for parents and caregivers who want healthier digital habits and more family connection.">
   <title>Less Screen, More Play — A Practical Guide for Families</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#content">Skip to content</a>
 
+  <style>
+    :root {
+      --forest: #214c3b;
+      --forest-dark: #183b2e;
+      --sage: #dfe8d8;
+      --sage-light: #eef2e9;
+      --cream: #f7f5ec;
+      --paper: #fffef9;
+      --ink: #26342c;
+      --muted: #66746a;
+      --clay: #d9a77e;
+      --line: rgba(33, 76, 59, .16);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 {
+      color: var(--forest);
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+    h1 em, h2 em { color: #71896f; }
+    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .section { padding-block: 96px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      color: #496b54;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #a6b99e;
+      box-shadow: 0 0 0 4px rgba(166, 185, 158, .16);
+    }
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--forest);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: var(--forest-dark); transform: translateY(-2px); }
+    .button:focus-visible, a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--clay);
+      outline-offset: 3px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 254, 249, .95);
+      border-bottom: 1px solid rgba(33, 76, 59, .1);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      width: min(1280px, calc(100% - 48px));
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: auto;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--forest);
+      text-decoration: none;
+    }
+    .brand-mark { width: 38px; height: 38px; }
+    .brand-mark svg { width: 100%; height: 100%; }
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .brand-name span {
+      margin-top: 4px;
+      color: #83937e;
+      font-size: 9px;
+      letter-spacing: .15em;
+    }
+    .main-nav { display: flex; align-items: center; gap: 30px; }
+    .main-nav a {
+      color: #516157;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .main-nav a:hover { color: var(--forest); }
+    .main-nav .nav-cta {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--forest);
+    }
+    .menu-toggle { display: none; }
+
+    /* Hero */
+    .hero {
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: 1fr .88fr;
+      align-items: center;
+      gap: 70px;
+      padding-block: 78px 90px;
+    }
+    .hero h1 {
+      margin-bottom: 22px;
+      font-size: clamp(58px, 7vw, 86px);
+      line-height: .98;
+    }
+    .hero-question {
+      max-width: 570px;
+      margin-bottom: 14px;
+      color: var(--forest-dark);
+      font-family: var(--serif);
+      font-size: clamp(20px, 2.2vw, 25px);
+      line-height: 1.4;
+    }
+    .hero-description {
+      max-width: 570px;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+    .hero-actions { display: flex; align-items: flex-start; flex-direction: column; gap: 10px; }
+    .button-note { color: #839087; font-size: 11px; }
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 30px;
+      color: #607064;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .hero-proof span { display: inline-flex; align-items: center; gap: 6px; }
+    .check { color: #789273; font-weight: 700; }
+    .hero-visual { position: relative; padding: 8px 0 24px 14px; }
+    .hero-image {
+      width: 100%;
+      aspect-ratio: .92;
+      object-fit: cover;
+      border-radius: 46% 46% 22px 22px / 34% 34% 22px 22px;
+      background: var(--sage);
+      box-shadow: 0 24px 55px rgba(35, 58, 44, .14);
+    }
+    .image-caption {
+      position: absolute;
+      right: -12px;
+      bottom: 4px;
+      max-width: 245px;
+      padding: 14px 17px;
+      border-radius: 14px;
+      background: var(--paper);
+      color: var(--forest);
+      box-shadow: 0 12px 35px rgba(35, 58, 44, .13);
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* Challenges */
+    .challenges { background: var(--cream); }
+    .heading-row {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr;
+      align-items: end;
+      gap: 60px;
+      margin-bottom: 45px;
+    }
+    .heading-row h2, .connection h2, .approach h2, .timer-copy h2, .faq h2 {
+      margin-bottom: 0;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.08;
+    }
+    .intro { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+    .challenge-list { border-top: 1px solid var(--line); }
+    .challenge-item {
+      min-height: 105px;
+      display: grid;
+      grid-template-columns: 42px 52px 1fr;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .number { color: #96a294; font-family: var(--serif); }
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e9eee3;
+      color: var(--forest);
+      font-size: 20px;
+    }
+    .challenge-item h3 {
+      margin: 0 0 4px;
+      color: var(--forest);
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .challenge-item p { margin: 0; color: var(--muted); font-size: 13px; }
+    .challenge-note {
+      max-width: 830px;
+      margin: 28px 0 0;
+      color: var(--forest);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    /* Family connection */
+    .connection { background: #f3f2e9; }
+    .connection-card {
+      max-width: 850px;
+      margin: auto;
+      padding: clamp(30px, 6vw, 64px);
+      border: 1px solid rgba(33, 76, 59, .12);
+      border-radius: 24px;
+      background: var(--paper);
+      box-shadow: 0 20px 60px rgba(35, 58, 44, .08);
+    }
+    .connection h2 { margin-bottom: 20px; }
+    .connection-card > p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .connection blockquote {
+      margin: 26px 0 0;
+      padding-left: 18px;
+      border-left: 2px solid #a4b596;
+      color: var(--forest);
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.55;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 760px) {
+      .wrap, .header-inner { width: calc(100% - 36px); }
+      .section { padding-block: 72px; }
+      .menu-toggle {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+      }
+      .menu-toggle span { width: 16px; height: 2px; background: var(--forest); }
+      .main-nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 20px 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .main-nav.is-open { display: flex; }
+      .main-nav a { padding: 12px 4px; }
+      .main-nav .nav-cta { text-align: center; }
+      .hero { grid-template-columns: 1fr; gap: 42px; padding-block: 55px 70px; }
+      .hero h1 { font-size: clamp(54px, 13vw, 76px); }
+      .hero-visual { width: min(100%, 520px); margin: auto; }
+      .heading-row { grid-template-columns: 1fr; gap: 20px; }
+      .challenge-item { grid-template-columns: 28px 44px 1fr; gap: 10px; padding-block: 15px; }
+      .icon { width: 40px; height: 40px; }
+    }
+    @media (max-width: 480px) {
+      .wrap, .header-inner { width: calc(100% - 30px); }
+      body { font-size: 15px; }
+      .hero h1 { font-size: 54px; }
+      .button { width: 100%; }
+      .hero-proof { gap: 10px 13px; font-size: 10px; }
+      .heading-row h2, .connection h2, .approach h2, .timer-copy h2, .faq h2 { font-size: 39px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#top" aria-label="Less Screen, More Play — home">
+      <a class="brand" href="#top" aria-label="Less Screen, More Play home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48" fill="none">
             <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6 0-5.6-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
@@ -41,597 +373,715 @@
         <a href="#challenges">The challenge</a>
         <a href="#approach">Our approach</a>
         <a href="#questions">FAQs</a>
-        <a class="nav-cta" href="#guide">Explore the guide <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="#guide">Explore the guide ↗</a>
       </nav>
     </div>
   </header>
 
-  <main id="content">
-    <section class="hero section-shell" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> A practical guide for families</p>
+  <main id="top">
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> A practical guide for families</p>
         <h1>Less screen.<br><em>More play.</em></h1>
         <p class="hero-question">Your child's online world is growing. Is your presence growing with it?</p>
         <p class="hero-description">As children spend more time on screens, they may come across content and interactions they are not ready to navigate alone. Your presence, guidance and the habits you build together can make a difference.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#guide">I want to support and guide my child <span aria-hidden="true">↗</span></a>
+          <a class="button" href="#guide">I want to support and guide my child ↗</a>
           <span class="button-note">For parents and caregivers of children aged 3–10</span>
         </div>
-        <div class="hero-proof" aria-label="Three guide themes">
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> Healthier habits</span>
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> More guidance</span>
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> More connection</span>
+        <div class="hero-proof">
+          <span><b class="check">✓</b> Healthier habits</span>
+          <span><b class="check">✓</b> More guidance</span>
+          <span><b class="check">✓</b> More connection</span>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="hero-image-frame">
-          <img src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-1.webp" alt="A parent and child sitting together and talking while looking at a tablet" fetchpriority="high">
-        </div>
-        <div class="image-caption"><span class="caption-icon" aria-hidden="true">✳</span><span>Being present also means staying involved.</span></div>
-        <span class="hero-orbit orbit-one" aria-hidden="true"></span>
-        <span class="hero-orbit orbit-two" aria-hidden="true"></span>
+        <img class="hero-image" src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-1.webp" alt="A parent and child sitting together and talking while looking at a tablet">
+        <div class="image-caption">Being present also means staying involved.</div>
       </div>
     </section>
 
-    <section class="challenge section-pad" id="challenges">
-      <div class="section-shell">
-        <div class="section-heading split-heading">
+    <section class="section challenges" id="challenges">
+      <div class="wrap">
+        <div class="heading-row">
           <div>
-            <p class="eyebrow"><span class="eyebrow-dot"></span> Awareness, not fear</p>
+            <p class="eyebrow"><span class="dot"></span> Awareness, not fear</p>
             <h2>Your child is growing up in a world they <em>are still learning to understand.</em></h2>
           </div>
-          <p class="section-intro">The internet offers learning, entertainment and discovery. Without guidance, some challenges may be easy to miss—not because technology is always harmful, but because children are still learning how to navigate it.</p>
+          <p class="intro">The internet offers learning, entertainment and discovery. Without guidance, some challenges may be easy to miss—not because technology is always harmful, but because children are still learning how to navigate it.</p>
         </div>
 
         <div class="challenge-list">
           <article class="challenge-item">
-            <span class="item-number">01</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 8h18v13H14l-6 5V8Z"/><path d="M12 13h8M12 17h5"/></svg></span>
-            <div><h3>Content that is not age-appropriate</h3><p>Videos and posts that a child may not yet have the maturity to understand.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
+            <span class="number">01</span><span class="icon" aria-hidden="true">▤</span>
+            <div><h3>Content that is not age-appropriate</h3><p>Videos and posts a child may not yet have the maturity to understand.</p></div>
           </article>
-
           <article class="challenge-item">
-            <span class="item-number">02</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="11" r="5"/><path d="M6 27c1-6 4-9 10-9s9 3 10 9"/><path d="M25 7v5m-2.5-2.5h5"/></svg></span>
-            <div><h3>Outside influences</h3><p>Messages and behaviours that may shape the way a child sees themselves and the world.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
+            <span class="number">02</span><span class="icon" aria-hidden="true">◎</span>
+            <div><h3>Outside influences</h3><p>Messages and behaviours that may shape how a child sees themselves and the world.</p></div>
           </article>
-
           <article class="challenge-item">
-            <span class="item-number">03</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/><path d="M5 5 3 9m24-4 2 4"/></svg></span>
-            <div><h3>Finding it hard to switch off</h3><p>Arguments can arise when it is time to stop a game, video or favourite show.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
+            <span class="number">03</span><span class="icon" aria-hidden="true">◷</span>
+            <div><h3>Finding it hard to switch off</h3><p>It can be difficult to stop a game, video or favourite show.</p></div>
           </article>
-
           <article class="challenge-item">
-            <span class="item-number">04</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27S5 20 5 12a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15Z"/><path d="M11 16h10"/></svg></span>
+            <span class="number">04</span><span class="icon" aria-hidden="true">♡</span>
             <div><h3>Less room for other experiences</h3><p>Fewer opportunities to play, explore, talk and try something new.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
           </article>
-
           <article class="challenge-item">
-            <span class="item-number">05</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 8h20v14H15l-6 5v-5H6z"/><path d="M11 13h10M11 17h7"/></svg></span>
-            <div><h3>Less time for family connection</h3><p>It can be harder to find time for conversation and shared attention when screens take up more of the day.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
+            <span class="number">05</span><span class="icon" aria-hidden="true">⌂</span>
+            <div><h3>Less time for family connection</h3><p>It can be harder to find time for conversation and shared attention.</p></div>
           </article>
         </div>
 
-        <p class="challenge-footnote"><span aria-hidden="true">✳</span> The challenge is not simply having a screen at home. It is making sure technology does not take the place of the guidance, presence and experiences children need as they grow.</p>
+        <p class="challenge-note">The challenge is not simply having a screen at home. It is making sure technology does not take the place of the guidance, presence and experiences children need as they grow.</p>
       </div>
     </section>
 
-    <section class="connection section-pad" id="presence">
-      <div class="section-shell connection-layout">
-        <div class="connection-visual">
-          <img src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-2.webp" alt="A parent and two children playing together with wooden blocks" loading="lazy">
-          <span class="photo-stamp"><span>time</span><strong>together</strong></span>
-          <span class="connection-scribble" aria-hidden="true">♡</span>
-        </div>
-
-        <div class="connection-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> What matters most</p>
+    <section class="section connection">
+      <div class="wrap">
+        <div class="connection-card">
+          <p class="eyebrow"><span class="dot"></span> What matters most</p>
           <h2>Your child needs more than less screen time. <em>They need guidance as they grow.</em></h2>
-          <p>No parent can control everything a child may come across online. But you can help them build healthier habits, talk about what they see and learn, over time, to make safer choices.</p>
+          <p>No parent can control everything a child may come across online. But you can help them build healthier habits, talk about what they see and learn to make safer choices over time.</p>
           <p>You can also create something no app can replace: moments of attention, play, conversation and family connection.</p>
           <blockquote>“This is not about keeping your child away from technology. It is about making sure technology does not take the place of your presence.”</blockquote>
         </div>
       </div>
     </section>
 
-    <section class="approach section-pad" id="approach">
-      <div class="section-shell">
-        <div class="section-heading centered-heading">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Small steps that fit your family</p>
-          <h2>Build healthier digital habits <em>together.</em></h2>
-          <p>Less Screen, More Play is for parents and caregivers who want to guide their children's digital habits and make more room for connection beyond screens.</p>
-        </div>
+    <style>
+  /* Remaining page sections */
+  .approach { background: var(--paper); }
 
-        <div class="approach-grid">
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8h18v17H7z"/><path d="M11 13h10M11 18h7"/><path d="m21 22 2 2 4-5"/></svg></span>
-            <span class="card-index">01 / BOUNDARIES</span>
-            <h3>Agree on clear limits</h3>
-            <p>Set realistic screen-use boundaries with rules your family understands and can revisit together.</p>
-          </article>
+  .section-heading {
+    max-width: 760px;
+    margin: 0 auto 42px;
+    text-align: center;
+  }
+  .section-heading .eyebrow { justify-content: center; }
+  .section-heading h2 { margin-bottom: 15px; }
+  .section-heading > p:last-child {
+    max-width: 650px;
+    margin-inline: auto;
+    color: var(--muted);
+    font-size: 14px;
+  }
 
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg></span>
-            <span class="card-index">02 / ROUTINES</span>
-            <h3>Make room for screen-free moments</h3>
-            <p>Build routines that do not rely on videos or games to fill every quiet moment.</p>
-          </article>
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .approach-card {
+    min-height: 230px;
+    padding: 25px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    transition: background .2s ease, transform .2s ease;
+  }
+  .approach-card:hover {
+    background: #f5f6ee;
+    transform: translateY(-3px);
+  }
+  .approach-card.accent { background: var(--sage-light); }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: var(--sage-light);
+    color: var(--forest);
+    font-size: 22px;
+  }
+  .card-index {
+    display: block;
+    margin-bottom: 8px;
+    color: #81917f;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .13em;
+  }
+  .approach-card h3 {
+    margin-bottom: 8px;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .approach-card p { margin: 0; color: var(--muted); font-size: 12px; }
+  .gentle-note {
+    margin: 26px 0 0;
+    color: #647265;
+    font-family: var(--serif);
+    font-size: 17px;
+    text-align: center;
+  }
 
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23c3-8 7-12 11-12s8 4 11 12"/><path d="M8 23h16M12 11l4-5 4 5"/><circle cx="16" cy="20" r="2"/></svg></span>
-            <span class="card-index">03 / PLAY</span>
-            <h3>Find other ways to explore</h3>
-            <p>Discover play and activities that suit your child's age, interests and everyday life.</p>
-          </article>
+  .timer-section { background: #eaf0e6; }
+  .timer-layout {
+    display: grid;
+    grid-template-columns: .8fr 1fr;
+    align-items: center;
+    gap: 70px;
+  }
+  .timer-circle {
+    width: min(100%, 340px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border: 1px solid rgba(73, 111, 82, .3);
+    border-radius: 50%;
+    outline: 1px dashed rgba(73, 111, 82, .3);
+    outline-offset: -24px;
+  }
+  .timer-face { text-align: center; }
+  .timer-display {
+    display: block;
+    color: var(--forest);
+    font-family: var(--sans);
+    font-size: clamp(32px, 4vw, 45px);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+  }
+  .timer-label {
+    color: #657e63;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .timer-copy h2 {
+    margin-bottom: 20px;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 500;
+    line-height: 1.08;
+  }
+  .timer-copy p:not(.eyebrow) {
+    color: #607065;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .timer-disclaimer { font-size: 11px !important; }
 
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8h20v14H15l-6 5v-5H6z"/><path d="M11 13h10M11 17h7"/></svg></span>
-            <span class="card-index">04 / CONVERSATION</span>
-            <h3>Talk about what they see online</h3>
-            <p>Make it easier to talk about content, outside influences and situations that deserve attention.</p>
-          </article>
+  .offer {
+    overflow: hidden;
+    background: var(--forest);
+    color: #f8f7ed;
+  }
+  .offer-layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(290px, 390px);
+    align-items: center;
+    gap: 70px;
+  }
+  .offer .eyebrow { color: #d3ddca; }
+  .offer h2 {
+    max-width: 650px;
+    margin-bottom: 18px;
+    color: #fbf8ed;
+    font-family: var(--serif);
+    font-size: clamp(38px, 4.5vw, 56px);
+    font-weight: 500;
+    line-height: 1.08;
+  }
+  .offer-copy > p:not(.eyebrow) {
+    max-width: 580px;
+    color: #cfdbcf;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .offer-points {
+    display: grid;
+    gap: 10px;
+    margin: 22px 0 0;
+    padding: 0;
+    color: #e4e9dc;
+    font-size: 13px;
+    list-style: none;
+  }
+  .offer-points li { display: flex; gap: 10px; }
+  .offer-points span { color: #c8d8ba; font-weight: 700; }
 
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><circle cx="22" cy="13" r="3"/><path d="M4 26c1-5 3-8 8-8s7 3 8 8M19 20c4-1 7 1 9 5"/></svg></span>
-            <span class="card-index">05 / GUIDANCE</span>
-            <h3>Stay involved with curiosity</h3>
-            <p>Take an active, age-appropriate interest in how your child uses technology.</p>
-          </article>
+  .offer-card {
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 20px 55px rgba(13, 37, 27, .2);
+  }
+  .guide-art {
+    min-height: 165px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding: 23px;
+    background: #dfe8d8;
+    color: var(--forest);
+  }
+  .guide-art::before,
+  .guide-art::after {
+    position: absolute;
+    border: 1px solid rgba(33, 76, 59, .25);
+    border-radius: 50%;
+    content: "";
+  }
+  .guide-art::before { top: -90px; right: -20px; width: 250px; height: 250px; }
+  .guide-art::after { top: -45px; right: 20px; width: 170px; height: 170px; }
+  .guide-art-sun {
+    position: absolute;
+    top: 24px;
+    right: 58px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--clay);
+  }
+  .guide-art-copy { position: relative; z-index: 1; }
+  .guide-art-copy small {
+    display: block;
+    margin-bottom: 7px;
+    color: #72866e;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .15em;
+  }
+  .guide-art-copy strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .guide-art-copy i {
+    display: block;
+    margin-top: 8px;
+    color: #6e806b;
+    font-family: var(--serif);
+    font-size: 12px;
+  }
+  .offer-card-body { padding: 24px; }
+  .digital-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #708074;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .digital-dot { width: 7px; height: 7px; border-radius: 50%; background: #8da787; }
+  .offer-card h3 {
+    margin: 12px 0 8px;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .price { display: flex; align-items: baseline; gap: 10px; margin: 0; }
+  .price strong {
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .price span { color: #7d897d; font-size: 10px; }
+  .price-note { margin: 3px 0 17px; color: #79857b; font-size: 10px; line-height: 1.55; }
+  .button-offer { width: 100%; background: #b8caa9; color: var(--forest-dark); }
+  .button-offer:hover { background: #cbd8c0; }
+  .secure-note { margin: 11px 0 0; color: #829087; font-size: 9px; text-align: center; }
+  .offer-disclaimer {
+    margin-top: 24px;
+    color: #c2d0c3;
+    font-size: 10px;
+  }
 
-          <article class="approach-card approach-card-accent">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S5 20 5 12a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15Z"/></svg></span>
-            <span class="card-index">06 / CONNECTION</span>
-            <h3>Protect time to be together</h3>
-            <p>Create family moments that strengthen your connection, both on and away from screens.</p>
-          </article>
-        </div>
+  .faq { background: var(--cream); }
+  .faq-layout {
+    display: grid;
+    grid-template-columns: .7fr 1fr;
+    gap: 70px;
+  }
+  .faq h2 {
+    margin-bottom: 15px;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 500;
+    line-height: 1.08;
+  }
+  .faq-intro > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
+  .faq-list { border-top: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 0;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 17px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    color: #789273;
+    font-family: var(--sans);
+    font-size: 22px;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
 
-        <p class="gentle-note"><span aria-hidden="true">✳</span> You do not have to change everything at once. Start with one small step that feels right at home.</p>
-      </div>
-    </section>
+  .closing-cta { padding-block: 45px; background: #e6ecdf; }
+  .closing-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+  }
+  .closing-inner p {
+    margin: 0;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.25;
+  }
+  .closing-inner em { color: #71896f; }
 
-    <section class="time-section section-pad" aria-labelledby="time-title">
-      <div class="section-shell time-layout">
-        <div class="time-mark" aria-label="Illustrative visual counter, not screen-time data or a deadline">
-          <span class="time-ring ring-outer"></span>
-          <span class="time-ring ring-inner"></span>
-          <span class="time-center">
-            <strong class="timer-display" id="timer-display" role="timer" aria-label="Illustrative counter starting at 2 hours, 20 minutes and 15 seconds">02:20:15</strong>
-            <span class="timer-caption">hours&nbsp; : &nbsp;minutes&nbsp; : &nbsp;seconds</span>
-          </span>
-          <span class="time-leaf leaf-a" aria-hidden="true">✳</span>
-          <span class="time-leaf leaf-b" aria-hidden="true">✳</span>
-        </div>
+  .site-footer { padding-block: 30px 20px; background: var(--paper); }
+  .footer-main {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-main > p { margin: 0; color: #78847b; font-size: 12px; }
+  .footer-top {
+    margin-left: auto;
+    color: var(--forest);
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    color: #879188;
+    font-size: 9px;
+  }
 
-        <div class="time-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> A gentle reminder</p>
-          <h2 id="time-title">Time keeps moving.<br><em>Small habits grow over time.</em></h2>
-          <p>Every day brings new chances to learn, play, explore and discover. When screens take up more space, other experiences can slip into the background.</p>
-          <p>You do not need to wait for a problem to appear before getting involved in your child's digital life. A conversation, a shared activity or one small change can be a place to begin.</p>
-          <p class="timer-disclaimer">This visual counter starts at 02:20:15 and moves forward. It does not measure your child's screen time, risk or relationship with you. It is not a promotion or a deadline.</p>
-          <a class="text-link" href="#guide">See how the guide may help <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
+  .purchase-dialog {
+    width: min(440px, calc(100% - 30px));
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 25px 70px rgba(14, 38, 27, .25);
+  }
+  .purchase-dialog::backdrop { background: rgba(20, 42, 31, .58); }
+  .purchase-dialog h2 {
+    margin: 8px 0 12px;
+    color: var(--forest);
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .purchase-dialog p { color: var(--muted); font-size: 13px; }
+  .purchase-dialog code { color: var(--forest); }
+  .dialog-close {
+    float: right;
+    border: 0;
+    background: transparent;
+    color: var(--forest);
+    font-size: 24px;
+    cursor: pointer;
+  }
 
-    <section class="offer section-pad" id="guide">
-      <div class="offer-decoration decor-one" aria-hidden="true"></div>
-      <div class="offer-decoration decor-two" aria-hidden="true"></div>
+  @media (max-width: 760px) {
+    .approach-grid { grid-template-columns: repeat(2, 1fr); }
+    .timer-layout, .offer-layout, .faq-layout { grid-template-columns: 1fr; gap: 35px; }
+    .timer-circle { width: min(75vw, 300px); }
+    .offer-card { width: min(100%, 430px); margin-inline: auto; }
+    .closing-inner { align-items: flex-start; flex-direction: column; }
+    .footer-main { flex-wrap: wrap; }
+    .footer-main > p { width: 100%; order: 2; }
+    .footer-bottom { flex-direction: column; gap: 6px; }
+  }
+  @media (max-width: 480px) {
+    .approach-grid { grid-template-columns: 1fr; }
+    .approach-card { min-height: 0; }
+    .timer-display { font-size: 38px; }
+    .price { flex-wrap: wrap; }
+  }
+</style>
 
-      <div class="section-shell offer-layout">
-        <div class="offer-copy">
-          <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> A thoughtful first step</p>
-          <h2>A more balanced relationship with technology can start at home.</h2>
-          <p>Less Screen, More Play offers practical guidance to help you review digital habits, set boundaries and make more room for play and interaction. Created for parents and caregivers of children aged 3–10.</p>
-          <ul class="offer-points">
-            <li><span aria-hidden="true">✓</span> Practical ideas to try at home</li>
-            <li><span aria-hidden="true">✓</span> Balance, not a ban on screens</li>
-            <li><span aria-hidden="true">✓</span> Support for talking and staying involved</li>
-          </ul>
-        </div>
-
-        <div class="offer-card">
-          <div class="guide-art" aria-hidden="true">
-            <span class="guide-art-sun"></span>
-            <span class="guide-art-line line-a"></span>
-            <span class="guide-art-line line-b"></span>
-            <span class="guide-art-copy">
-              <small>A PRACTICAL FAMILY GUIDE</small>
-              <strong>Less Screen,<br>More Play</strong>
-              <i>more room for connection</i>
-            </span>
-            <span class="guide-art-leaf">✳</span>
-          </div>
-
-          <div class="offer-card-body">
-            <span class="digital-label"><span class="digital-dot"></span> Digital guide</span>
-            <h3>Start at your own pace.</h3>
-            <p class="price"><strong>$5.99 USD</strong><span>suggested starting price</span></p>
-            <p class="price-note">Suggested price, subject to confirmation on the checkout platform. Access details will be provided by Tutora.</p>
-            <a class="button button-offer" href="#guide" data-purchase>Explore the guide <span aria-hidden="true">↗</span></a>
-            <p class="secure-note">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V6a3 3 0 0 1 6 0v2"/></svg>
-              Digital access through the checkout platform
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <p class="offer-disclaimer section-shell">This guide is an educational resource for parents and caregivers. It does not replace parental supervision or guarantee protection from every online risk.</p>
-    </section>
-
-    <section class="faq section-pad" id="questions">
-      <div class="section-shell faq-layout">
-        <div class="faq-intro">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Before you begin</p>
-          <h2>Frequently asked <em>questions.</em></h2>
-          <p>A balanced approach starts with clear information and realistic expectations.</p>
-          <a class="text-link" href="#guide">Explore the guide <span aria-hidden="true">↗</span></a>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>What ages is this guide designed for?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>It was created for parents and caregivers of children aged 3–10.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Is the goal to stop my child using the internet?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. The goal is to help families build more balanced habits and encourage age-appropriate, guided use of technology.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Does the guide protect children from every online risk?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. It aims to help parents stay involved, talk about content and influences, and use appropriate supervision. It does not replace parental supervision or guarantee protection from every online risk.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Do I need to remove screens completely?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. The aim is to find a balance between technology, play, everyday activities and family interaction.</p>
-          </details>
-          <details class="faq-item">
-            <summary>How do I receive the guide?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>It is a digital product. Access and delivery details will be provided on the Tutora checkout page.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing-cta">
-      <div class="section-shell closing-inner">
-        <p>More guidance in a digital world.<br><em>More room for childhood.</em></p>
-        <a class="button button-primary" href="#guide">Take a look at the guide <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="section-shell footer-main">
-      <a class="brand footer-brand" href="#top" aria-label="Less Screen, More Play — home">
-        <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" fill="none">
-            <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6 0-5.6-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
-            <path d="M14 40c4.7-8.7 10.8-13.6 20.1-17.3" stroke="#F7F5EC" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="m22 18 9 5-9 5V18Z" fill="#F7F5EC"/>
-          </svg>
-        </span>
-        <span class="brand-name">Less Screen <span>More Play</span></span>
-      </a>
-
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
-        <span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-        <a href="#challenges">The challenge</a>
-        <a href="#approach">Our approach</a>
-        <a href="#questions">FAQs</a>
-        <a class="nav-cta" href="#guide">Explore the guide <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="content">
-    <section class="hero section-shell" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> A practical guide for families</p>
-        <h1>Less screen.<br><em>More play.</em></h1>
-        <p class="hero-question">Your child's online world is growing. Is your presence growing with it?</p>
-        <p class="hero-description">As children spend more time on screens, they may come across content and interactions they are not ready to navigate alone. Your presence, guidance and the habits you build together can make a difference.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#guide">I want to support and guide my child <span aria-hidden="true">↗</span></a>
-          <span class="button-note">For parents and caregivers of children aged 3–10</span>
-        </div>
-        <div class="hero-proof" aria-label="Three guide themes">
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> Healthier habits</span>
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> More guidance</span>
-          <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-9"/></svg> More connection</span>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-image-frame">
-          <img src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-1.webp" alt="A parent and child sitting together and talking while looking at a tablet" fetchpriority="high">
-        </div>
-        <div class="image-caption"><span class="caption-icon" aria-hidden="true">✳</span><span>Being present also means staying involved.</span></div>
-        <span class="hero-orbit orbit-one" aria-hidden="true"></span>
-        <span class="hero-orbit orbit-two" aria-hidden="true"></span>
-      </div>
-    </section>
-
-    <section class="challenge section-pad" id="challenges">
-      <div class="section-shell">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow"><span class="eyebrow-dot"></span> Awareness, not fear</p>
-            <h2>Your child is growing up in a world they <em>are still learning to understand.</em></h2>
-          </div>
-          <p class="section-intro">The internet offers learning, entertainment and discovery. Without guidance, some challenges may be easy to miss—not because technology is always harmful, but because children are still learning how to navigate it.</p>
-        </div>
-
-        <div class="challenge-list">
-          <article class="challenge-item">
-            <span class="item-number">01</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 8h18v13H14l-6 5V8Z"/><path d="M12 13h8M12 17h5"/></svg></span>
-            <div><h3>Content that is not age-appropriate</h3><p>Videos and posts that a child may not yet have the maturity to understand.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
-          </article>
-
-          <article class="challenge-item">
-            <span class="item-number">02</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="11" r="5"/><path d="M6 27c1-6 4-9 10-9s9 3 10 9"/><path d="M25 7v5m-2.5-2.5h5"/></svg></span>
-            <div><h3>Outside influences</h3><p>Messages and behaviours that may shape the way a child sees themselves and the world.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
-          </article>
-
-          <article class="challenge-item">
-            <span class="item-number">03</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/><path d="M5 5 3 9m24-4 2 4"/></svg></span>
-            <div><h3>Finding it hard to switch off</h3><p>Arguments can arise when it is time to stop a game, video or favourite show.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
-          </article>
-
-          <article class="challenge-item">
-            <span class="item-number">04</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27S5 20 5 12a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15Z"/><path d="M11 16h10"/></svg></span>
-            <div><h3>Less room for other experiences</h3><p>Fewer opportunities to play, explore, talk and try something new.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
-          </article>
-
-          <article class="challenge-item">
-            <span class="item-number">05</span>
-            <span class="item-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 8h20v14H15l-6 5v-5H6z"/><path d="M11 13h10M11 17h7"/></svg></span>
-            <div><h3>Less time for family connection</h3><p>It can be harder to find time for conversation and shared attention when screens take up more of the day.</p></div>
-            <span class="item-arrow" aria-hidden="true">↗</span>
-          </article>
-        </div>
-
-        <p class="challenge-footnote"><span aria-hidden="true">✳</span> The challenge is not simply having a screen at home. It is making sure technology does not take the place of the guidance, presence and experiences children need as they grow.</p>
-      </div>
-    </section>
-
-    <section class="connection section-pad" id="presence">
-      <div class="section-shell connection-layout">
-        <div class="connection-visual">
-          <img src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-2.webp" alt="A parent and two children playing together with wooden blocks" loading="lazy">
-          <span class="photo-stamp"><span>time</span><strong>together</strong></span>
-          <span class="connection-scribble" aria-hidden="true">♡</span>
-        </div>
-
-        <div class="connection-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> What matters most</p>
-          <h2>Your child needs more than less screen time. <em>They need guidance as they grow.</em></h2>
-          <p>No parent can control everything a child may come across online. But you can help them build healthier habits, talk about what they see and learn, over time, to make safer choices.</p>
-          <p>You can also create something no app can replace: moments of attention, play, conversation and family connection.</p>
-          <blockquote>“This is not about keeping your child away from technology. It is about making sure technology does not take the place of your presence.”</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section class="approach section-pad" id="approach">
-      <div class="section-shell">
-        <div class="section-heading centered-heading">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Small steps that fit your family</p>
-          <h2>Build healthier digital habits <em>together.</em></h2>
-          <p>Less Screen, More Play is for parents and caregivers who want to guide their children's digital habits and make more room for connection beyond screens.</p>
-        </div>
-
-        <div class="approach-grid">
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8h18v17H7z"/><path d="M11 13h10M11 18h7"/><path d="m21 22 2 2 4-5"/></svg></span>
-            <span class="card-index">01 / BOUNDARIES</span>
-            <h3>Agree on clear limits</h3>
-            <p>Set realistic screen-use boundaries with rules your family understands and can revisit together.</p>
-          </article>
-
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg></span>
-            <span class="card-index">02 / ROUTINES</span>
-            <h3>Make room for screen-free moments</h3>
-            <p>Build routines that do not rely on videos or games to fill every quiet moment.</p>
-          </article>
-
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23c3-8 7-12 11-12s8 4 11 12"/><path d="M8 23h16M12 11l4-5 4 5"/><circle cx="16" cy="20" r="2"/></svg></span>
-            <span class="card-index">03 / PLAY</span>
-            <h3>Find other ways to explore</h3>
-            <p>Discover play and activities that suit your child's age, interests and everyday life.</p>
-          </article>
-
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8h20v14H15l-6 5v-5H6z"/><path d="M11 13h10M11 17h7"/></svg></span>
-            <span class="card-index">04 / CONVERSATION</span>
-            <h3>Talk about what they see online</h3>
-            <p>Make it easier to talk about content, outside influences and situations that deserve attention.</p>
-          </article>
-
-          <article class="approach-card">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="11" r="4"/><circle cx="22" cy="13" r="3"/><path d="M4 26c1-5 3-8 8-8s7 3 8 8M19 20c4-1 7 1 9 5"/></svg></span>
-            <span class="card-index">05 / GUIDANCE</span>
-            <h3>Stay involved with curiosity</h3>
-            <p>Take an active, age-appropriate interest in how your child uses technology.</p>
-          </article>
-
-          <article class="approach-card approach-card-accent">
-            <span class="card-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S5 20 5 12a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15Z"/></svg></span>
-            <span class="card-index">06 / CONNECTION</span>
-            <h3>Protect time to be together</h3>
-            <p>Create family moments that strengthen your connection, both on and away from screens.</p>
-          </article>
-        </div>
-
-        <p class="gentle-note"><span aria-hidden="true">✳</span> You do not have to change everything at once. Start with one small step that feels right at home.</p>
-      </div>
-    </section>
-
-    <section class="time-section section-pad" aria-labelledby="time-title">
-      <div class="section-shell time-layout">
-        <div class="time-mark" aria-label="Illustrative visual counter, not screen-time data or a deadline">
-          <span class="time-ring ring-outer"></span>
-          <span class="time-ring ring-inner"></span>
-          <span class="time-center">
-            <strong class="timer-display" id="timer-display" role="timer" aria-label="Illustrative counter starting at 2 hours, 20 minutes and 15 seconds">02:20:15</strong>
-            <span class="timer-caption">hours&nbsp; : &nbsp;minutes&nbsp; : &nbsp;seconds</span>
-          </span>
-          <span class="time-leaf leaf-a" aria-hidden="true">✳</span>
-          <span class="time-leaf leaf-b" aria-hidden="true">✳</span>
-        </div>
-
-        <div class="time-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> A gentle reminder</p>
-          <h2 id="time-title">Time keeps moving.<br><em>Small habits grow over time.</em></h2>
-          <p>Every day brings new chances to learn, play, explore and discover. When screens take up more space, other experiences can slip into the background.</p>
-          <p>You do not need to wait for a problem to appear before getting involved in your child's digital life. A conversation, a shared activity or one small change can be a place to begin.</p>
-          <p class="timer-disclaimer">This visual counter starts at 02:20:15 and moves forward. It does not measure your child's screen time, risk or relationship with you. It is not a promotion or a deadline.</p>
-          <a class="text-link" href="#guide">See how the guide may help <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="offer section-pad" id="guide">
-      <div class="offer-decoration decor-one" aria-hidden="true"></div>
-      <div class="offer-decoration decor-two" aria-hidden="true"></div>
-
-      <div class="section-shell offer-layout">
-        <div class="offer-copy">
-          <p class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> A thoughtful first step</p>
-          <h2>A more balanced relationship with technology can start at home.</h2>
-          <p>Less Screen, More Play offers practical guidance to help you review digital habits, set boundaries and make more room for play and interaction. Created for parents and caregivers of children aged 3–10.</p>
-          <ul class="offer-points">
-            <li><span aria-hidden="true">✓</span> Practical ideas to try at home</li>
-            <li><span aria-hidden="true">✓</span> Balance, not a ban on screens</li>
-            <li><span aria-hidden="true">✓</span> Support for talking and staying involved</li>
-          </ul>
-        </div>
-
-        <div class="offer-card">
-          <div class="guide-art" aria-hidden="true">
-            <span class="guide-art-sun"></span>
-            <span class="guide-art-line line-a"></span>
-            <span class="guide-art-line line-b"></span>
-            <span class="guide-art-copy">
-              <small>A PRACTICAL FAMILY GUIDE</small>
-              <strong>Less Screen,<br>More Play</strong>
-              <i>more room for connection</i>
-            </span>
-            <span class="guide-art-leaf">✳</span>
-          </div>
-
-          <div class="offer-card-body">
-            <span class="digital-label"><span class="digital-dot"></span> Digital guide</span>
-            <h3>Start at your own pace.</h3>
-            <p class="price"><strong>$5.99 USD</strong><span>suggested starting price</span></p>
-            <p class="price-note">Suggested price, subject to confirmation on the checkout platform. Access details will be provided by Tutora.</p>
-            <a class="button button-offer" href="#guide" data-purchase>Explore the guide <span aria-hidden="true">↗</span></a>
-            <p class="secure-note">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2"/><path d="M7 8V6a3 3 0 0 1 6 0v2"/></svg>
-              Digital access through the checkout platform
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <p class="offer-disclaimer section-shell">This guide is an educational resource for parents and caregivers. It does not replace parental supervision or guarantee protection from every online risk.</p>
-    </section>
-
-    <section class="faq section-pad" id="questions">
-      <div class="section-shell faq-layout">
-        <div class="faq-intro">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Before you begin</p>
-          <h2>Frequently asked <em>questions.</em></h2>
-          <p>A balanced approach starts with clear information and realistic expectations.</p>
-          <a class="text-link" href="#guide">Explore the guide <span aria-hidden="true">↗</span></a>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>What ages is this guide designed for?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>It was created for parents and caregivers of children aged 3–10.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Is the goal to stop my child using the internet?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. The goal is to help families build more balanced habits and encourage age-appropriate, guided use of technology.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Does the guide protect children from every online risk?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. It aims to help parents stay involved, talk about content and influences, and use appropriate supervision. It does not replace parental supervision or guarantee protection from every online risk.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Do I need to remove screens completely?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>No. The aim is to find a balance between technology, play, everyday activities and family interaction.</p>
-          </details>
-          <details class="faq-item">
-            <summary>How do I receive the guide?<span class="faq-plus" aria-hidden="true"></span></summary>
-            <p>It is a digital product. Access and delivery details will be provided on the Tutora checkout page.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing-cta">
-      <div class="section-shell closing-inner">
-        <p>More guidance in a digital world.<br><em>More room for childhood.</em></p>
-        <a class="button button-primary" href="#guide">Take a look at the guide <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="section-shell footer-main">
-      <a class="brand footer-brand" href="#top" aria-label="Less Screen, More Play — home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6 0-5.6-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
-            <path d="M14 40c4.7-8.7 10.8-13.6 20.1-17.3" stroke="#F7F5EC" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="m22 18 9 5-9 5V18Z" fill="#F7F5EC"/>
-          </svg>
-        </span>
-        <span class="brand-name">Less Screen <span>More Play</span></span>
-      </a>
-      <p>Healthier digital habits. More guidance. More time together.</p>
-      <a class="footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+<section class="section approach" id="approach">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow"><span class="dot"></span> Small steps that fit your family</p>
+      <h2>Build healthier digital habits <em>together.</em></h2>
+      <p>Practical ideas for parents and caregivers who want to guide their children's digital habits and make more room for connection beyond screens.</p>
     </div>
 
-    <div class="section-shell footer-bottom">
-      <span>© <span id="current-year">2026</span> Less Screen, More Play</span>
-      <span>Educational resource. Parental supervision remains essential.</span>
+    <div class="approach-grid">
+      <article class="approach-card">
+        <span class="card-icon" aria-hidden="true">✓</span>
+        <span class="card-index">01 / BOUNDARIES</span>
+        <h3>Agree on clear limits</h3>
+        <p>Set realistic screen-use boundaries with rules your family understands and can revisit together.</p>
+      </article>
+      <article class="approach-card">
+        <span class="card-icon" aria-hidden="true">◷</span>
+        <span class="card-index">02 / ROUTINES</span>
+        <h3>Make room for screen-free moments</h3>
+        <p>Build routines that do not rely on videos or games to fill every quiet moment.</p>
+      </article>
+      <article class="approach-card">
+        <span class="card-icon" aria-hidden="true">✳</span>
+        <span class="card-index">03 / PLAY</span>
+        <h3>Find other ways to explore</h3>
+        <p>Discover play and activities that suit your child's age, interests and everyday life.</p>
+      </article>
+      <article class="approach-card">
+        <span class="card-icon" aria-hidden="true">“</span>
+        <span class="card-index">04 / CONVERSATION</span>
+        <h3>Talk about what they see online</h3>
+        <p>Make it easier to talk about content, outside influences and situations that deserve attention.</p>
+      </article>
+      <article class="approach-card">
+        <span class="card-icon" aria-hidden="true">◎</span>
+        <span class="card-index">05 / GUIDANCE</span>
+        <h3>Stay involved with curiosity</h3>
+        <p>Take an active, age-appropriate interest in how your child uses technology.</p>
+      </article>
+      <article class="approach-card accent">
+        <span class="card-icon" aria-hidden="true">♡</span>
+        <span class="card-index">06 / CONNECTION</span>
+        <h3>Protect time to be together</h3>
+        <p>Create family moments that strengthen your connection, both on and away from screens.</p>
+      </article>
     </div>
-  </footer>
 
-  <dialog class="purchase-dialog" id="purchase-dialog" aria-labelledby="purchase-title">
-    <button class="dialog-close" type="button" aria-label="Close">×</button>
-    <span class="dialog-spark" aria-hidden="true">✳</span>
-    <h2 id="purchase-title">The checkout link is not set yet.</h2>
-    <p>When you have the real Tutora checkout URL, add it to <code>TUTORA_CHECKOUT_URL</code> in <code>script.js</code>.</p>
-    <button class="button button-primary dialog-ok" type="button">Got it</button>
-  </dialog>
+    <p class="gentle-note">You do not have to change everything at once. Start with one small step that feels right at home.</p>
+  </div>
+</section>
+
+<section class="section timer-section" aria-labelledby="timer-title">
+  <div class="wrap timer-layout">
+    <div class="timer-circle" aria-label="Illustrative counter, not screen-time data or a deadline">
+      <div class="timer-face">
+        <strong class="timer-display" id="timer-display" role="timer">02:20:15</strong>
+        <span class="timer-label">hours : minutes : seconds</span>
+      </div>
+    </div>
+
+    <div class="timer-copy">
+      <p class="eyebrow"><span class="dot"></span> A gentle reminder</p>
+      <h2 id="timer-title">Time keeps moving.<br><em>Small habits grow over time.</em></h2>
+      <p>Every day brings new chances to learn, play, explore and discover. When screens take up more space, other experiences can slip into the background.</p>
+      <p>You do not need to wait for a problem to appear before getting involved in your child's digital life. A conversation, a shared activity or one small change can be a place to begin.</p>
+      <p class="timer-disclaimer">This visual counter starts at 02:20:15 and moves forward. It does not measure your child's screen time or risk. It is not a promotion or a deadline.</p>
+      <a href="#guide">See how the guide may help ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="section offer" id="guide">
+  <div class="wrap offer-layout">
+    <div class="offer-copy">
+      <p class="eyebrow"><span class="dot"></span> A thoughtful first step</p>
+      <h2>A more balanced relationship with technology can start at home.</h2>
+      <p>Less Screen, More Play offers practical guidance to help you review digital habits, set boundaries and make more room for play and interaction. Created for parents and caregivers of children aged 3–10.</p>
+      <ul class="offer-points">
+        <li><span>✓</span> Practical ideas to try at home</li>
+        <li><span>✓</span> Balance, not a ban on screens</li>
+        <li><span>✓</span> Support for talking and staying involved</li>
+      </ul>
+    </div>
+
+    <div class="offer-card">
+      <div class="guide-art">
+        <span class="guide-art-sun"></span>
+        <div class="guide-art-copy">
+          <small>A PRACTICAL FAMILY GUIDE</small>
+          <strong>Less Screen,<br>More Play</strong>
+          <i>more room for connection</i>
+        </div>
+      </div>
+
+      <div class="offer-card-body">
+        <span class="digital-label"><span class="digital-dot"></span> Digital guide</span>
+        <h3>Start at your own pace.</h3>
+        <p class="price"><strong>$5.99 USD</strong><span>suggested starting price</span></p>
+        <p class="price-note">Suggested price, subject to confirmation on the checkout platform. Access details will be provided by Tutora.</p>
+        <a class="button button-offer" href="#guide" data-purchase>Explore the guide ↗</a>
+        <p class="secure-note">Digital access through the checkout platform</p>
+      </div>
+    </div>
+  </div>
+  <p class="wrap offer-disclaimer">This is an educational resource for parents and caregivers. It does not replace parental supervision or guarantee protection from every online risk.</p>
+</section>
+
+<section class="section faq" id="questions">
+  <div class="wrap faq-layout">
+    <div class="faq-intro">
+      <p class="eyebrow"><span class="dot"></span> Before you begin</p>
+      <h2>Frequently asked <em>questions.</em></h2>
+      <p>A balanced approach starts with clear information and realistic expectations.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What ages is this guide designed for?</summary>
+        <p>It was created for parents and caregivers of children aged 3–10.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is the goal to stop my child using the internet?</summary>
+        <p>No. The goal is to help families build more balanced habits and encourage age-appropriate, guided use of technology.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does the guide protect children from every online risk?</summary>
+        <p>No. It does not replace parental supervision or guarantee protection from every online risk.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to remove screens completely?</summary>
+        <p>No. The aim is to find a balance between technology, play, everyday activities and family interaction.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I receive the guide?</summary>
+        <p>It is a digital product. Access and delivery details will be provided on the Tutora checkout page.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="closing-cta">
+  <div class="wrap closing-inner">
+    <p>More guidance in a digital world.<br><em>More room for childhood.</em></p>
+    <a class="button" href="#guide">Take a look at the guide ↗</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <a class="brand" href="#top" aria-label="Less Screen, More Play home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6-5.6-11.8-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
+          <path d="M14 40c4.7-8.7 10.8-13.6 20.1-17.3" stroke="#F7F5EC" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="m22 18 9 5-9 5V18Z" fill="#F7F5EC"/>
+        </svg>
+      </span>
+      <span class="brand-name">Less Screen <span>More Play</span></span>
+    </a>
+    <p>Healthier digital habits. More guidance. More time together.</p>
+    <a class="footer-top" href="#top">Back to top ↑</a>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <span id="current-year">2026</span> Less Screen, More Play</span>
+    <span>Educational resource. Parental supervision remains essential.</span>
+  </div>
+</footer>
+
+<dialog class="purchase-dialog" id="purchase-dialog">
+  <button class="dialog-close" type="button" aria-label="Close">×</button>
+  <h2>The checkout link is not set yet.</h2>
+  <p>Add the real Tutora checkout address to <code>TUTORA_CHECKOUT_URL</code> in the JavaScript below.</p>
+  <button class="button dialog-ok" type="button">Got it</button>
+</dialog>
+
+<script>
+  /* Add the real HTTPS Tutora checkout URL when it is available. */
+  const TUTORA_CHECKOUT_URL = "";
+
+  /* Illustrative only: not screen-time data and not a sales deadline. */
+  const timerDisplay = document.querySelector("#timer-display");
+  let timerSeconds = (2 * 60 * 60) + (20 * 60) + 15;
+
+  function formatTimer(totalSeconds) {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return [hours, minutes, seconds]
+      .map(value => String(value).padStart(2, "0"))
+      .join(":");
+  }
+
+  if (timerDisplay) {
+    timerDisplay.textContent = formatTimer(timerSeconds);
+    window.setInterval(() => {
+      timerSeconds += 1;
+      timerDisplay.textContent = formatTimer(timerSeconds);
+    }, 1000);
+  }
+
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.querySelector("#main-nav");
+  const purchaseDialog = document.querySelector("#purchase-dialog");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const open = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!open));
+      menuToggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+      mainNav.classList.toggle("is-open", !open);
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+      
+        link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+        mainNav.classList.remove("is-open");
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-purchase]").forEach(link => {
+    if (/^https:\/\//i.test(TUTORA_CHECKOUT_URL.trim())) {
+      link.href = TUTORA_CHECKOUT_URL.trim();
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    } else {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        if (purchaseDialog?.showModal) purchaseDialog.showModal();
+      });
+    }
+  });
+
+  function closePurchaseDialog() {
+    if (purchaseDialog?.open) purchaseDialog.close();
+  }
+
+  document.querySelector(".dialog-close")?.addEventListener("click", closePurchaseDialog);
+  document.querySelector(".dialog-ok")?.addEventListener("click", closePurchaseDialog);
+
+  purchaseDialog?.addEventListener("click", event => {
+    if (event.target === purchaseDialog) closePurchaseDialog();
+  });
+
+  const year = document.querySelector("#current-year");
+  if (year) year.textContent = String(new Date().getFullYear());
+</script>
 </body>
-  </html>
-  
-            
+</html>
