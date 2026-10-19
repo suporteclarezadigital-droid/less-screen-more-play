@@ -3,73 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#214c3b">
-  <meta name="description" content="A practical guide for parents and caregivers who want healthier digital habits and more family connection.">
-  <title>Less Screen, More Play — A Practical Guide for Families</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#111214">
+  <meta name="description" content="A thoughtful guide for parents and caregivers building healthier digital habits with their children.">
+  <title>Less Screen, More Play — A Guide for Families</title>
 
   <style>
     :root {
-      --forest: #214c3b;
-      --forest-dark: #183b2e;
-      --sage: #dfe8d8;
-      --sage-light: #eef2e9;
-      --cream: #f7f5ec;
-      --paper: #fffef9;
-      --ink: #26342c;
-      --muted: #66746a;
-      --clay: #d9a77e;
-      --line: rgba(33, 76, 59, .16);
-      --serif: "Fraunces", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-      --max: 1160px;
+      --black: #111214;
+      --charcoal: #202124;
+      --ivory: #f7f3eb;
+      --paper: #fffdf9;
+      --gold: #b8945d;
+      --gold-light: #e1cfac;
+      --ink: #252629;
+      --muted: #717176;
+      --line: rgba(17, 18, 20, .14);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --page: 1160px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
     body {
       margin: 0;
-      color: var(--ink);
       background: var(--paper);
+      color: var(--ink);
       font-family: var(--sans);
       font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
+
     a { color: inherit; }
     button { font: inherit; }
+    img, svg { max-width: 100%; }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2 {
-      color: var(--forest);
-      font-family: var(--serif);
-      font-weight: 500;
-      letter-spacing: -.04em;
+
+    .wrap {
+      width: min(var(--page), calc(100% - 48px));
+      margin-inline: auto;
     }
-    h1 em, h2 em { color: #71896f; }
-    .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-    .section { padding-block: 96px; }
+
+    .section { padding-block: 88px; }
+
     .eyebrow {
       display: flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      color: #496b54;
-      font-size: 11px;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: #69645c;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
-    .dot {
+
+    .eyebrow-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #a6b99e;
-      box-shadow: 0 0 0 4px rgba(166, 185, 158, .16);
+      background: var(--gold);
     }
+
     .button {
       min-height: 52px;
       display: inline-flex;
@@ -77,21 +78,25 @@
       justify-content: center;
       gap: 12px;
       padding: 14px 22px;
-      border: 0;
+      border: 1px solid var(--black);
       border-radius: 999px;
-      background: var(--forest);
-      color: white;
+      background: var(--black);
+      color: #fff;
       font-size: 13px;
       font-weight: 700;
       text-align: center;
       text-decoration: none;
-      cursor: pointer;
-      transition: background .2s ease, transform .2s ease;
+      transition: transform .2s ease, background .2s ease;
     }
-    .button:hover { background: var(--forest-dark); transform: translateY(-2px); }
-    .button:focus-visible, a:focus-visible, button:focus-visible, summary:focus-visible {
-      outline: 3px solid var(--clay);
-      outline-offset: 3px;
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #303135;
+    }
+
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
     }
 
     /* Header */
@@ -99,10 +104,11 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(255, 254, 249, .95);
-      border-bottom: 1px solid rgba(33, 76, 59, .1);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 249, .96);
       backdrop-filter: blur(12px);
     }
+
     .header-inner {
       width: min(1280px, calc(100% - 48px));
       min-height: 76px;
@@ -112,194 +118,352 @@
       gap: 24px;
       margin: auto;
     }
+
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--forest);
+      color: var(--black);
       text-decoration: none;
     }
-    .brand-mark { width: 38px; height: 38px; }
-    .brand-mark svg { width: 100%; height: 100%; }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 20px;
+    }
+
     .brand-name {
-      display: flex;
-      flex-direction: column;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: .06em;
+      letter-spacing: .1em;
+      line-height: 1.35;
       text-transform: uppercase;
     }
+
     .brand-name span {
-      margin-top: 4px;
-      color: #83937e;
+      display: block;
+      color: #77736d;
       font-size: 9px;
-      letter-spacing: .15em;
+      letter-spacing: .18em;
     }
-    .main-nav { display: flex; align-items: center; gap: 30px; }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
     .main-nav a {
-      color: #516157;
-      font-size: 13px;
+      color: #55565a;
+      font-size: 12px;
       font-weight: 600;
       text-decoration: none;
     }
-    .main-nav a:hover { color: var(--forest); }
+
+    .main-nav a:hover { color: var(--black); }
+
     .main-nav .nav-cta {
-      padding: 10px 16px;
+      padding: 10px 15px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      color: var(--forest);
+      color: var(--black);
     }
+
     .menu-toggle { display: none; }
 
     /* Hero */
     .hero {
       min-height: 610px;
       display: grid;
-      grid-template-columns: 1fr .88fr;
+      grid-template-columns: 1fr .92fr;
       align-items: center;
-      gap: 70px;
-      padding-block: 78px 90px;
+      gap: 56px;
+      padding-block: 70px 82px;
     }
+
+    .hero-copy { min-width: 0; }
+
     .hero h1 {
       margin-bottom: 22px;
+      color: var(--black);
+      font-family: var(--serif);
       font-size: clamp(58px, 7vw, 86px);
+      font-weight: 400;
+      letter-spacing: -.055em;
       line-height: .98;
     }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
     .hero-question {
-      max-width: 570px;
+      max-width: 560px;
       margin-bottom: 14px;
-      color: var(--forest-dark);
+      color: #28292c;
       font-family: var(--serif);
       font-size: clamp(20px, 2.2vw, 25px);
       line-height: 1.4;
     }
+
     .hero-description {
-      max-width: 570px;
-      margin-bottom: 26px;
+      max-width: 560px;
+      margin-bottom: 25px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.85;
     }
-    .hero-actions { display: flex; align-items: flex-start; flex-direction: column; gap: 10px; }
-    .button-note { color: #839087; font-size: 11px; }
+
+    .hero-actions {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .button-note {
+      color: #77736d;
+      font-size: 11px;
+    }
+
     .hero-proof {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 30px;
-      color: #607064;
+      gap: 10px 18px;
+      margin-top: 26px;
+      color: #5e5e5e;
       font-size: 11px;
       font-weight: 600;
     }
-    .hero-proof span { display: inline-flex; align-items: center; gap: 6px; }
-    .check { color: #789273; font-weight: 700; }
-    .hero-visual { position: relative; padding: 8px 0 24px 14px; }
-    .hero-image {
-      width: 100%;
-      aspect-ratio: .92;
-      object-fit: cover;
-      border-radius: 46% 46% 22px 22px / 34% 34% 22px 22px;
-      background: var(--sage);
-      box-shadow: 0 24px 55px rgba(35, 58, 44, .14);
+
+    .hero-proof span { display: inline-flex; gap: 6px; }
+    .proof-check { color: var(--gold); }
+
+    .hero-visual {
+      min-width: 0;
+      position: relative;
+      padding: 8px 0 20px 12px;
     }
+
+    .hero-art {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+      border-radius: 48% 48% 22px 22px / 32% 32% 22px 22px;
+      background: var(--charcoal);
+      box-shadow: 0 24px 55px rgba(17, 18, 20, .18);
+    }
+
     .image-caption {
       position: absolute;
-      right: -12px;
-      bottom: 4px;
+      right: -10px;
+      bottom: 0;
       max-width: 245px;
       padding: 14px 17px;
+      border: 1px solid rgba(17, 18, 20, .08);
       border-radius: 14px;
       background: var(--paper);
-      color: var(--forest);
-      box-shadow: 0 12px 35px rgba(35, 58, 44, .13);
+      color: var(--black);
+      box-shadow: 0 12px 35px rgba(17, 18, 20, .12);
       font-family: var(--serif);
       font-size: 14px;
       line-height: 1.4;
     }
 
-    /* Challenges */
-    .challenges { background: var(--cream); }
+    /* Sections used by the rest of the page */
+    .challenges { background: var(--ivory); }
+
     .heading-row {
       display: grid;
       grid-template-columns: 1.1fr .8fr;
       align-items: end;
-      gap: 60px;
-      margin-bottom: 45px;
-    }
-    .heading-row h2, .connection h2, .approach h2, .timer-copy h2, .faq h2 {
-      margin-bottom: 0;
-      font-size: clamp(38px, 5vw, 60px);
-      line-height: 1.08;
-    }
-    .intro { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
-    .challenge-list { border-top: 1px solid var(--line); }
-    .challenge-item {
-      min-height: 105px;
-      display: grid;
-      grid-template-columns: 42px 52px 1fr;
-      align-items: center;
-      gap: 18px;
-      border-bottom: 1px solid var(--line);
-    }
-    .number { color: #96a294; font-family: var(--serif); }
-    .icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #e9eee3;
-      color: var(--forest);
-      font-size: 20px;
-    }
-    .challenge-item h3 {
-      margin: 0 0 4px;
-      color: var(--forest);
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 500;
-    }
-    .challenge-item p { margin: 0; color: var(--muted); font-size: 13px; }
-    .challenge-note {
-      max-width: 830px;
-      margin: 28px 0 0;
-      color: var(--forest);
-      font-family: var(--serif);
-      font-size: 19px;
-      line-height: 1.55;
+      gap: 55px;
+      margin-bottom: 40px;
     }
 
-    /* Family connection */
-    .connection { background: #f3f2e9; }
+    .section h2 {
+      color: var(--black);
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+
+    .section h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .intro, .body-copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .challenge-list { border-top: 1px solid var(--line); }
+
+    .challenge-item {
+      min-height: 96px;
+      display: grid;
+      grid-template-columns: 40px 44px 1fr;
+      align-items: center;
+      gap: 16px;
+      padding-block: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .item-number {
+      color: #908879;
+      font-family: var(--serif);
+      font-size: 15px;
+    }
+
+    .item-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(17, 18, 20, .12);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 18px;
+    }
+
+    .challenge-item h3, .approach-card h3 {
+      margin: 0 0 4px;
+      color: var(--black);
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    .challenge-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .challenge-note {
+      max-width: 850px;
+      margin: 26px 0 0;
+      color: #4f4c46;
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     .connection-card {
       max-width: 850px;
       margin: auto;
-      padding: clamp(30px, 6vw, 64px);
-      border: 1px solid rgba(33, 76, 59, .12);
-      border-radius: 24px;
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
       background: var(--paper);
-      box-shadow: 0 20px 60px rgba(35, 58, 44, .08);
-    }
-    .connection h2 { margin-bottom: 20px; }
-    .connection-card > p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.9; }
-    .connection blockquote {
-      margin: 26px 0 0;
-      padding-left: 18px;
-      border-left: 2px solid #a4b596;
-      color: var(--forest);
-      font-family: var(--serif);
-      font-size: 19px;
-      line-height: 1.55;
+      box-shadow: 0 20px 55px rgba(17, 18, 20, .06);
     }
 
-    /* Responsive layout */
+    .connection-card blockquote {
+      margin: 24px 0 0;
+      padding-left: 18px;
+      border-left: 2px solid var(--gold);
+      color: var(--black);
+      font-family: var(--serif);
+      font-size: 18px;
+    }
+
+    .approach { background: #fffdf9; }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow { justify-content: center; }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .approach-card {
+      min-height: 205px;
+      padding: 23px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .approach-card h3 { margin-top: 14px; }
+    .approach-card p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .card-index {
+      color: #817868;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .timer-section { background: var(--black); color: var(--paper); }
+    .timer-section h2 { color: var(--paper); }
+    .timer-section .body-copy { color: #c4c1ba; }
+
+    .timer-layout {
+      display: grid;
+      grid-template-columns: .8fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .timer-circle {
+      width: min(100%, 310px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin: auto;
+      border: 1px solid rgba(225, 207, 172, .52);
+      border-radius: 50%;
+      outline: 1px solid rgba(225, 207, 172, .2);
+      outline-offset: -17px;
+    }
+
+    .timer-display {
+      display: block;
+      color: var(--gold-light);
+      font-family: var(--sans);
+      font-size: clamp(34px, 5vw, 48px);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .05em;
+    }
+
+    .timer-label {
+      color: #c4c1ba;
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .timer-disclaimer { font-size: 11px !important; }
+
     @media (max-width: 760px) {
       .wrap, .header-inner { width: calc(100% - 36px); }
-      .section { padding-block: 72px; }
+      .section { padding-block: 68px; }
+
       .menu-toggle {
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -309,7 +473,13 @@
         border-radius: 50%;
         background: transparent;
       }
-      .menu-toggle span { width: 16px; height: 2px; background: var(--forest); }
+
+      .menu-toggle span {
+        width: 17px;
+        height: 2px;
+        background: var(--black);
+      }
+
       .main-nav {
         position: absolute;
         top: 100%;
@@ -323,29 +493,38 @@
         border-bottom: 1px solid var(--line);
         background: var(--paper);
       }
+
       .main-nav.is-open { display: flex; }
       .main-nav a { padding: 12px 4px; }
       .main-nav .nav-cta { text-align: center; }
-      .hero { grid-template-columns: 1fr; gap: 42px; padding-block: 55px 70px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding-block: 48px 65px;
+      }
+
       .hero h1 { font-size: clamp(54px, 13vw, 76px); }
       .hero-visual { width: min(100%, 520px); margin: auto; }
-      .heading-row { grid-template-columns: 1fr; gap: 20px; }
-      .challenge-item { grid-template-columns: 28px 44px 1fr; gap: 10px; padding-block: 15px; }
-      .icon { width: 40px; height: 40px; }
+      .heading-row, .timer-layout { grid-template-columns: 1fr; gap: 20px; }
+      .approach-grid { grid-template-columns: repeat(2, 1fr); }
+      .timer-circle { width: min(74vw, 290px); }
     }
+
     @media (max-width: 480px) {
       .wrap, .header-inner { width: calc(100% - 30px); }
-      body { font-size: 15px; }
-      .hero h1 { font-size: 54px; }
       .button { width: 100%; }
-      .hero-proof { gap: 10px 13px; font-size: 10px; }
-      .heading-row h2, .connection h2, .approach h2, .timer-copy h2, .faq h2 { font-size: 39px; }
+      .hero-proof { gap: 9px 13px; font-size: 10px; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .approach-card { min-height: 0; }
+      .challenge-item { grid-template-columns: 28px 38px 1fr; gap: 9px; }
+      .item-icon { width: 36px; height: 36px; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
       }
     }
   </style>
@@ -355,13 +534,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="Less Screen, More Play home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6 0-5.6-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
-            <path d="M14 40c4.7-8.7 10.8-13.6 20.1-17.3" stroke="#F7F5EC" stroke-width="2.6" stroke-linecap="round"/>
-            <path d="m22 18 9 5-9 5V18Z" fill="#F7F5EC"/>
-          </svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true">✳</span>
         <span class="brand-name">Less Screen <span>More Play</span></span>
       </a>
 
@@ -380,94 +553,82 @@
 
   <main id="top">
     <section class="hero wrap">
-      <div>
-        <p class="eyebrow"><span class="dot"></span> A practical guide for families</p>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A practical guide for families</p>
         <h1>Less screen.<br><em>More play.</em></h1>
         <p class="hero-question">Your child's online world is growing. Is your presence growing with it?</p>
         <p class="hero-description">As children spend more time on screens, they may come across content and interactions they are not ready to navigate alone. Your presence, guidance and the habits you build together can make a difference.</p>
+
         <div class="hero-actions">
-          <a class="button" href="#guide">I want to support and guide my child ↗</a>
+          <a class="button" href="#guide">I want to support and guide my child <span aria-hidden="true">↗</span></a>
           <span class="button-note">For parents and caregivers of children aged 3–10</span>
         </div>
+
         <div class="hero-proof">
-          <span><b class="check">✓</b> Healthier habits</span>
-          <span><b class="check">✓</b> More guidance</span>
-          <span><b class="check">✓</b> More connection</span>
+          <span><b class="proof-check">✓</b> Healthier habits</span>
+          <span><b class="proof-check">✓</b> More guidance</span>
+          <span><b class="proof-check">✓</b> More connection</span>
         </div>
       </div>
 
       <div class="hero-visual">
-        <img class="hero-image" src="https://8328-imfy8ufhpdizv72uoqpkn-0cc71a04.us4.manus.computer/manus-storage/async-images/TNCKK3czbvHVNAvax8kpup/image-1.webp" alt="A parent and child sitting together and talking while looking at a tablet">
+        <svg class="hero-art" viewBox="0 0 640 560" role="img" aria-labelledby="family-title family-desc">
+          <title id="family-title">A parent and child sharing a quiet moment</title>
+          <desc id="family-desc">A warm, simple illustration of a parent and child sitting together at home.</desc>
+          <defs>
+            <linearGradient id="room" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a3b3d"/>
+              <stop offset="1" stop-color="#17181a"/>
+            </linearGradient>
+            <radialGradient id="lamp" cx="50%" cy="45%" r="55%">
+              <stop offset="0" stop-color="#d9bd8c" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#d9bd8c" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="640" height="560" fill="url(#room)"/>
+          <circle cx="465" cy="180" r="200" fill="url(#lamp)"/>
+          <rect x="72" y="70" width="496" height="300" rx="18" fill="#d9d1c4"/>
+          <rect x="96" y="95" width="200" height="250" rx="6" fill="#9b8971"/>
+          <rect x="108" y="108" width="176" height="224" fill="#d7c7aa"/>
+          <path d="M108 250c48-75 92-70 176-4v86H108z" fill="#97856c"/>
+          <path d="M72 335h496v83c0 28-22 50-50 50H122c-28 0-50-22-50-50z" fill="#252629"/>
+          <path d="M103 350c58-33 132-32 193 1v117H103z" fill="#343538"/>
+          <path d="M338 350c62-37 143-34 199 1v117H338z" fill="#2c2d30"/>
+          <ellipse cx="321" cy="493" rx="235" ry="27" fill="#111214" opacity=".5"/>
+
+          <path d="M171 364c4-65 25-103 72-103 43 0 67 40 67 103v59H171z" fill="#18191b"/>
+          <circle cx="240" cy="220" r="47" fill="#b77e5e"/>
+          <path d="M192 223c0-56 25-82 60-82 31 0 52 25 49 69-13-13-26-24-48-26-22-2-38 12-61 39z" fill="#19191a"/>
+          <path d="M225 277c19 13 39 13 57 0" fill="none" stroke="#8e5e49" stroke-width="5" stroke-linecap="round"/>
+
+          <path d="M315 376c1-55 20-86 57-86 36 0 54 31 55 86v44H315z" fill="#b8945d"/>
+          <circle cx="370" cy="245" r="39" fill="#d19a75"/>
+          <path d="M330 247c-2-42 16-68 47-68 27 0 44 20 43 57-11-12-24-19-43-18-21 0-32 10-47 29z" fill="#242426"/>
+          <path d="M356 273c10 7 21 7 30 0" fill="none" stroke="#a66f54" stroke-width="4" stroke-linecap="round"/>
+
+          <path d="M255 346c43-26 77-25 112 0" fill="none" stroke="#e4d2b1" stroke-width="6" stroke-linecap="round"/>
+          <rect x="274" y="348" width="94" height="61" rx="8" fill="#111214" stroke="#d5bd91" stroke-width="3"/>
+          <rect x="283" y="357" width="76" height="43" rx="4" fill="#494342"/>
+          <circle cx="321" cy="406" r="3" fill="#d5bd91"/>
+
+          <path d="M488 112v78" stroke="#4b4338" stroke-width="7"/>
+          <path d="M458 190h60l-12-41h-36z" fill="#c1a574"/>
+          <circle cx="488" cy="191" r="8" fill="#dfc99f"/>
+          <path d="M142 477h354" stroke="#b8945d" stroke-opacity=".55" stroke-width="2"/>
+        </svg>
+
         <div class="image-caption">Being present also means staying involved.</div>
       </div>
     </section>
-
-    <section class="section challenges" id="challenges">
-      <div class="wrap">
-        <div class="heading-row">
-          <div>
-            <p class="eyebrow"><span class="dot"></span> Awareness, not fear</p>
-            <h2>Your child is growing up in a world they <em>are still learning to understand.</em></h2>
-          </div>
-          <p class="intro">The internet offers learning, entertainment and discovery. Without guidance, some challenges may be easy to miss—not because technology is always harmful, but because children are still learning how to navigate it.</p>
-        </div>
-
-        <div class="challenge-list">
-          <article class="challenge-item">
-            <span class="number">01</span><span class="icon" aria-hidden="true">▤</span>
-            <div><h3>Content that is not age-appropriate</h3><p>Videos and posts a child may not yet have the maturity to understand.</p></div>
-          </article>
-          <article class="challenge-item">
-            <span class="number">02</span><span class="icon" aria-hidden="true">◎</span>
-            <div><h3>Outside influences</h3><p>Messages and behaviours that may shape how a child sees themselves and the world.</p></div>
-          </article>
-          <article class="challenge-item">
-            <span class="number">03</span><span class="icon" aria-hidden="true">◷</span>
-            <div><h3>Finding it hard to switch off</h3><p>It can be difficult to stop a game, video or favourite show.</p></div>
-          </article>
-          <article class="challenge-item">
-            <span class="number">04</span><span class="icon" aria-hidden="true">♡</span>
-            <div><h3>Less room for other experiences</h3><p>Fewer opportunities to play, explore, talk and try something new.</p></div>
-          </article>
-          <article class="challenge-item">
-            <span class="number">05</span><span class="icon" aria-hidden="true">⌂</span>
-            <div><h3>Less time for family connection</h3><p>It can be harder to find time for conversation and shared attention.</p></div>
-          </article>
-        </div>
-
-        <p class="challenge-note">The challenge is not simply having a screen at home. It is making sure technology does not take the place of the guidance, presence and experiences children need as they grow.</p>
-      </div>
-    </section>
-
-    <section class="section connection">
-      <div class="wrap">
-        <div class="connection-card">
-          <p class="eyebrow"><span class="dot"></span> What matters most</p>
-          <h2>Your child needs more than less screen time. <em>They need guidance as they grow.</em></h2>
-          <p>No parent can control everything a child may come across online. But you can help them build healthier habits, talk about what they see and learn to make safer choices over time.</p>
-          <p>You can also create something no app can replace: moments of attention, play, conversation and family connection.</p>
-          <blockquote>“This is not about keeping your child away from technology. It is about making sure technology does not take the place of your presence.”</blockquote>
-        </div>
-      </div>
-    </section>
-
     <style>
-  /* Remaining page sections */
-  .approach { background: var(--paper); }
-
   .section-heading {
-    max-width: 760px;
-    margin: 0 auto 42px;
+    max-width: 720px;
+    margin: 0 auto 38px;
     text-align: center;
   }
+
   .section-heading .eyebrow { justify-content: center; }
-  .section-heading h2 { margin-bottom: 15px; }
-  .section-heading > p:last-child {
-    max-width: 650px;
-    margin-inline: auto;
-    color: var(--muted);
-    font-size: 14px;
-  }
 
   .approach-grid {
     display: grid;
@@ -475,410 +636,406 @@
     border-top: 1px solid var(--line);
     border-left: 1px solid var(--line);
   }
+
   .approach-card {
-    min-height: 230px;
-    padding: 25px;
+    min-height: 205px;
+    padding: 23px;
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     background: var(--paper);
-    transition: background .2s ease, transform .2s ease;
   }
-  .approach-card:hover {
-    background: #f5f6ee;
-    transform: translateY(-3px);
+
+  .approach-card h3 { margin-top: 14px; }
+
+  .approach-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
   }
-  .approach-card.accent { background: var(--sage-light); }
-  .card-icon {
-    width: 44px;
-    height: 44px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 18px;
-    border-radius: 14px;
-    background: var(--sage-light);
-    color: var(--forest);
-    font-size: 22px;
-  }
+
   .card-index {
-    display: block;
-    margin-bottom: 8px;
-    color: #81917f;
+    color: #817868;
     font-size: 9px;
     font-weight: 700;
-    letter-spacing: .13em;
+    letter-spacing: .14em;
   }
-  .approach-card h3 {
-    margin-bottom: 8px;
-    color: var(--forest);
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.25;
-  }
-  .approach-card p { margin: 0; color: var(--muted); font-size: 12px; }
+
   .gentle-note {
-    margin: 26px 0 0;
-    color: #647265;
+    margin: 24px 0 0;
+    color: #64615b;
     font-family: var(--serif);
-    font-size: 17px;
     text-align: center;
   }
 
-  .timer-section { background: #eaf0e6; }
+  .timer-section {
+    background: var(--black);
+    color: var(--paper);
+  }
+
+  .timer-section h2 { color: var(--paper); }
+
+  .timer-section .body-copy { color: #c4c1ba; }
+
   .timer-layout {
     display: grid;
     grid-template-columns: .8fr 1fr;
     align-items: center;
-    gap: 70px;
+    gap: 60px;
   }
+
   .timer-circle {
-    width: min(100%, 340px);
+    width: min(100%, 310px);
     aspect-ratio: 1;
     display: grid;
     place-items: center;
     margin: auto;
-    border: 1px solid rgba(73, 111, 82, .3);
+    border: 1px solid rgba(225, 207, 172, .52);
     border-radius: 50%;
-    outline: 1px dashed rgba(73, 111, 82, .3);
-    outline-offset: -24px;
+    outline: 1px solid rgba(225, 207, 172, .2);
+    outline-offset: -17px;
   }
+
   .timer-face { text-align: center; }
+
   .timer-display {
     display: block;
-    color: var(--forest);
+    color: var(--gold-light);
     font-family: var(--sans);
-    font-size: clamp(32px, 4vw, 45px);
-    font-weight: 600;
+    font-size: clamp(34px, 5vw, 48px);
     font-variant-numeric: tabular-nums;
-    letter-spacing: .02em;
+    letter-spacing: .05em;
   }
+
   .timer-label {
-    color: #657e63;
+    color: #c4c1ba;
     font-size: 9px;
-    letter-spacing: .12em;
+    letter-spacing: .14em;
     text-transform: uppercase;
   }
-  .timer-copy h2 {
-    margin-bottom: 20px;
-    color: var(--forest);
-    font-family: var(--serif);
-    font-size: clamp(38px, 5vw, 58px);
-    font-weight: 500;
-    line-height: 1.08;
-  }
-  .timer-copy p:not(.eyebrow) {
-    color: #607065;
-    font-size: 14px;
-    line-height: 1.85;
-  }
+
   .timer-disclaimer { font-size: 11px !important; }
 
   .offer {
-    overflow: hidden;
-    background: var(--forest);
-    color: #f8f7ed;
+    background: var(--charcoal);
+    color: var(--paper);
   }
-  .offer-layout {
-    display: grid;
-    grid-template-columns: 1fr minmax(290px, 390px);
-    align-items: center;
-    gap: 70px;
-  }
-  .offer .eyebrow { color: #d3ddca; }
+
   .offer h2 {
-    max-width: 650px;
-    margin-bottom: 18px;
-    color: #fbf8ed;
+    color: var(--paper);
     font-family: var(--serif);
-    font-size: clamp(38px, 4.5vw, 56px);
-    font-weight: 500;
+    font-size: clamp(38px, 5vw, 56px);
+    font-weight: 400;
+    letter-spacing: -.04em;
     line-height: 1.08;
   }
+
+  .offer h2 em {
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  .offer-layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 380px);
+    align-items: center;
+    gap: 55px;
+  }
+
   .offer-copy > p:not(.eyebrow) {
-    max-width: 580px;
-    color: #cfdbcf;
+    color: #d0cec9;
     font-size: 14px;
     line-height: 1.85;
   }
+
   .offer-points {
     display: grid;
-    gap: 10px;
-    margin: 22px 0 0;
+    gap: 9px;
+    margin: 20px 0 0;
     padding: 0;
-    color: #e4e9dc;
+    color: #e5e2db;
     font-size: 13px;
     list-style: none;
   }
+
   .offer-points li { display: flex; gap: 10px; }
-  .offer-points span { color: #c8d8ba; font-weight: 700; }
+  .offer-points li span { color: var(--gold-light); }
 
   .offer-card {
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 16px;
     background: var(--paper);
     color: var(--ink);
-    box-shadow: 0 20px 55px rgba(13, 37, 27, .2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .22);
   }
+
   .guide-art {
-    min-height: 165px;
-    position: relative;
+    min-height: 155px;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
     padding: 23px;
-    background: #dfe8d8;
-    color: var(--forest);
+    background: #e8e0d2;
+    color: var(--black);
   }
-  .guide-art::before,
-  .guide-art::after {
-    position: absolute;
-    border: 1px solid rgba(33, 76, 59, .25);
-    border-radius: 50%;
-    content: "";
-  }
-  .guide-art::before { top: -90px; right: -20px; width: 250px; height: 250px; }
-  .guide-art::after { top: -45px; right: 20px; width: 170px; height: 170px; }
-  .guide-art-sun {
-    position: absolute;
-    top: 24px;
-    right: 58px;
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    background: var(--clay);
-  }
-  .guide-art-copy { position: relative; z-index: 1; }
-  .guide-art-copy small {
+
+  .guide-art small {
     display: block;
     margin-bottom: 7px;
-    color: #72866e;
+    color: #71634e;
     font-size: 8px;
     font-weight: 700;
     letter-spacing: .15em;
   }
-  .guide-art-copy strong {
+
+  .guide-art strong {
     display: block;
     font-family: var(--serif);
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1;
   }
-  .guide-art-copy i {
+
+  .guide-art i {
     display: block;
     margin-top: 8px;
-    color: #6e806b;
+    color: #71634e;
     font-family: var(--serif);
     font-size: 12px;
   }
-  .offer-card-body { padding: 24px; }
+
+  .offer-card-body { padding: 23px; }
+
   .digital-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: #708074;
-    font-size: 10px;
+    color: #71634e;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: .08em;
+    letter-spacing: .13em;
     text-transform: uppercase;
   }
-  .digital-dot { width: 7px; height: 7px; border-radius: 50%; background: #8da787; }
+
   .offer-card h3 {
     margin: 12px 0 8px;
-    color: var(--forest);
+    color: var(--black);
     font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 23px;
+    font-weight: 400;
   }
-  .price { display: flex; align-items: baseline; gap: 10px; margin: 0; }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0;
+  }
+
   .price strong {
-    color: var(--forest);
+    color: var(--black);
     font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 400;
   }
-  .price span { color: #7d897d; font-size: 10px; }
-  .price-note { margin: 3px 0 17px; color: #79857b; font-size: 10px; line-height: 1.55; }
-  .button-offer { width: 100%; background: #b8caa9; color: var(--forest-dark); }
-  .button-offer:hover { background: #cbd8c0; }
-  .secure-note { margin: 11px 0 0; color: #829087; font-size: 9px; text-align: center; }
-  .offer-disclaimer {
-    margin-top: 24px;
-    color: #c2d0c3;
+
+  .price span, .price-note {
+    color: var(--muted);
     font-size: 10px;
   }
 
-  .faq { background: var(--cream); }
+  .price-note { margin: 4px 0 16px; }
+
+  .button-offer {
+    width: 100%;
+    border-color: var(--black);
+    background: var(--black);
+    color: #fff;
+  }
+
+  .offer-disclaimer {
+    margin-top: 24px;
+    color: #d0cec9;
+    font-size: 10px;
+  }
+
+  .faq { background: var(--ivory); }
+
   .faq-layout {
     display: grid;
     grid-template-columns: .7fr 1fr;
-    gap: 70px;
+    gap: 60px;
   }
-  .faq h2 {
-    margin-bottom: 15px;
-    color: var(--forest);
-    font-family: var(--serif);
-    font-size: clamp(38px, 5vw, 56px);
-    font-weight: 500;
-    line-height: 1.08;
-  }
-  .faq-intro > p:not(.eyebrow) { color: var(--muted); font-size: 14px; }
+
   .faq-list { border-top: 1px solid var(--line); }
   .faq-item { border-bottom: 1px solid var(--line); }
+
   .faq-item summary {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 18px;
-    padding: 18px 0;
-    color: var(--forest);
+    gap: 15px;
+    padding: 17px 0;
+    color: var(--black);
     font-family: var(--serif);
     font-size: 17px;
     cursor: pointer;
     list-style: none;
   }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after {
-    content: "+";
-    color: #789273;
-    font-family: var(--sans);
-    font-size: 22px;
-  }
-  .faq-item[open] summary::after { content: "−"; }
-  .faq-item p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
 
-  .closing-cta { padding-block: 45px; background: #e6ecdf; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { color: var(--gold); content: "+"; }
+  .faq-item[open] summary::after { content: "−"; }
+
+  .faq-item p {
+    margin: 0 0 17px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .closing-cta { padding-block: 42px; background: #e9e3d8; }
+
   .closing-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 25px;
+    gap: 24px;
   }
+
   .closing-inner p {
     margin: 0;
-    color: var(--forest);
+    color: var(--black);
     font-family: var(--serif);
-    font-size: clamp(24px, 3vw, 34px);
-    line-height: 1.25;
+    font-size: clamp(23px, 3vw, 32px);
+    line-height: 1.3;
   }
-  .closing-inner em { color: #71896f; }
 
-  .site-footer { padding-block: 30px 20px; background: var(--paper); }
+  .closing-inner em { color: #8e7144; }
+
+  .site-footer { padding-block: 27px 18px; }
+
   .footer-main {
     display: flex;
     align-items: center;
-    gap: 22px;
-    padding-bottom: 20px;
+    gap: 20px;
+    padding-bottom: 18px;
     border-bottom: 1px solid var(--line);
   }
-  .footer-main > p { margin: 0; color: #78847b; font-size: 12px; }
+
+  .footer-main p { margin: 0; color: var(--muted); font-size: 11px; }
+
   .footer-top {
     margin-left: auto;
-    color: var(--forest);
+    color: var(--black);
     font-size: 11px;
     font-weight: 700;
     text-decoration: none;
   }
+
   .footer-bottom {
     display: flex;
     justify-content: space-between;
-    gap: 16px;
-    padding-top: 14px;
-    color: #879188;
+    gap: 14px;
+    padding-top: 13px;
+    color: var(--muted);
     font-size: 9px;
   }
 
   .purchase-dialog {
-    width: min(440px, calc(100% - 30px));
-    padding: 34px;
+    width: min(420px, calc(100% - 28px));
+    padding: 30px;
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 16px;
     background: var(--paper);
     color: var(--ink);
-    box-shadow: 0 25px 70px rgba(14, 38, 27, .25);
   }
-  .purchase-dialog::backdrop { background: rgba(20, 42, 31, .58); }
+
+  .purchase-dialog::backdrop { background: rgba(0, 0, 0, .65); }
+
   .purchase-dialog h2 {
-    margin: 8px 0 12px;
-    color: var(--forest);
+    color: var(--black);
     font-family: var(--serif);
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.1;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.15;
   }
+
   .purchase-dialog p { color: var(--muted); font-size: 13px; }
-  .purchase-dialog code { color: var(--forest); }
+
   .dialog-close {
     float: right;
     border: 0;
     background: transparent;
-    color: var(--forest);
+    color: var(--black);
     font-size: 24px;
     cursor: pointer;
   }
 
   @media (max-width: 760px) {
     .approach-grid { grid-template-columns: repeat(2, 1fr); }
-    .timer-layout, .offer-layout, .faq-layout { grid-template-columns: 1fr; gap: 35px; }
-    .timer-circle { width: min(75vw, 300px); }
-    .offer-card { width: min(100%, 430px); margin-inline: auto; }
+    .timer-layout, .offer-layout, .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .timer-circle { width: min(74vw, 290px); }
     .closing-inner { align-items: flex-start; flex-direction: column; }
     .footer-main { flex-wrap: wrap; }
-    .footer-main > p { width: 100%; order: 2; }
+    .footer-main p { width: 100%; order: 2; }
     .footer-bottom { flex-direction: column; gap: 6px; }
   }
+
   @media (max-width: 480px) {
     .approach-grid { grid-template-columns: 1fr; }
     .approach-card { min-height: 0; }
-    .timer-display { font-size: 38px; }
+    .challenge-item { grid-template-columns: 28px 38px 1fr; gap: 9px; }
+    .item-icon { width: 36px; height: 36px; }
     .price { flex-wrap: wrap; }
   }
 </style>
 
+<section class="section challenges" id="challenges">
+  <div class="wrap">
+    <div class="heading-row">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Awareness, not fear</p>
+        <h2>Your child is growing up in a world they <em>are still learning to understand.</em></h2>
+      </div>
+      <p class="intro">The internet offers learning, entertainment and discovery. Without guidance, some challenges may be easy to miss—not because technology is always harmful, but because children are still learning how to navigate it.</p>
+    </div>
+
+    <div class="challenge-list">
+      <article class="challenge-item"><span class="item-number">01</span><span class="item-icon">◈</span><div><h3>Content that is not age-appropriate</h3><p>Videos and posts a child may not yet have the maturity to understand.</p></div></article>
+      <article class="challenge-item"><span class="item-number">02</span><span class="item-icon">◎</span><div><h3>Outside influences</h3><p>Messages and behaviours that may shape how a child sees themselves and the world.</p></div></article>
+      <article class="challenge-item"><span class="item-number">03</span><span class="item-icon">◷</span><div><h3>Finding it hard to switch off</h3><p>It can be difficult to stop a game, video or favourite show.</p></div></article>
+      <article class="challenge-item"><span class="item-number">04</span><span class="item-icon">✳</span><div><h3>Less room for other experiences</h3><p>Fewer opportunities to play, explore, talk and try something new.</p></div></article>
+      <article class="challenge-item"><span class="item-number">05</span><span class="item-icon">⌂</span><div><h3>Less time for family connection</h3><p>It can be harder to find time for conversation and shared attention.</p></div></article>
+    </div>
+
+    <p class="challenge-note">The challenge is not simply having a screen at home. It is making sure technology does not take the place of the guidance, presence and experiences children need as they grow.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="connection-card">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> What matters most</p>
+      <h2>Your child needs more than less screen time. <em>They need guidance as they grow.</em></h2>
+      <p class="body-copy">No parent can control everything a child may come across online. But you can help them build healthier habits, talk about what they see and learn to make safer choices over time.</p>
+      <p class="body-copy">You can also create something no app can replace: moments of attention, play, conversation and family connection.</p>
+      <blockquote>“This is not about keeping your child away from technology. It is about making sure technology does not take the place of your presence.”</blockquote>
+    </div>
+  </div>
+</section>
+
 <section class="section approach" id="approach">
   <div class="wrap">
     <div class="section-heading">
-      <p class="eyebrow"><span class="dot"></span> Small steps that fit your family</p>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> Small steps that fit your family</p>
       <h2>Build healthier digital habits <em>together.</em></h2>
-      <p>Practical ideas for parents and caregivers who want to guide their children's digital habits and make more room for connection beyond screens.</p>
+      <p class="intro">Practical ideas for parents and caregivers who want to guide their children's digital habits and make more room for connection beyond screens.</p>
     </div>
 
     <div class="approach-grid">
-      <article class="approach-card">
-        <span class="card-icon" aria-hidden="true">✓</span>
-        <span class="card-index">01 / BOUNDARIES</span>
-        <h3>Agree on clear limits</h3>
-        <p>Set realistic screen-use boundaries with rules your family understands and can revisit together.</p>
-      </article>
-      <article class="approach-card">
-        <span class="card-icon" aria-hidden="true">◷</span>
-        <span class="card-index">02 / ROUTINES</span>
-        <h3>Make room for screen-free moments</h3>
-        <p>Build routines that do not rely on videos or games to fill every quiet moment.</p>
-      </article>
-      <article class="approach-card">
-        <span class="card-icon" aria-hidden="true">✳</span>
-        <span class="card-index">03 / PLAY</span>
-        <h3>Find other ways to explore</h3>
-        <p>Discover play and activities that suit your child's age, interests and everyday life.</p>
-      </article>
-      <article class="approach-card">
-        <span class="card-icon" aria-hidden="true">“</span>
-        <span class="card-index">04 / CONVERSATION</span>
-        <h3>Talk about what they see online</h3>
-        <p>Make it easier to talk about content, outside influences and situations that deserve attention.</p>
-      </article>
-      <article class="approach-card">
-        <span class="card-icon" aria-hidden="true">◎</span>
-        <span class="card-index">05 / GUIDANCE</span>
-        <h3>Stay involved with curiosity</h3>
-        <p>Take an active, age-appropriate interest in how your child uses technology.</p>
-      </article>
-      <article class="approach-card accent">
-        <span class="card-icon" aria-hidden="true">♡</span>
-        <span class="card-index">06 / CONNECTION</span>
-        <h3>Protect time to be together</h3>
-        <p>Create family moments that strengthen your connection, both on and away from screens.</p>
-      </article>
+      <article class="approach-card"><span class="card-index">01 / BOUNDARIES</span><h3>Agree on clear limits</h3><p>Set realistic screen-use boundaries your family can understand and revisit together.</p></article>
+      <article class="approach-card"><span class="card-index">02 / ROUTINES</span><h3>Make room for screen-free moments</h3><p>Build routines that do not rely on videos or games to fill every quiet moment.</p></article>
+      <article class="approach-card"><span class="card-index">03 / PLAY</span><h3>Find other ways to explore</h3><p>Discover play and activities that suit your child's age, interests and everyday life.</p></article>
+      <article class="approach-card"><span class="card-index">04 / CONVERSATION</span><h3>Talk about what they see online</h3><p>Make it easier to talk about content, outside influences and situations that deserve attention.</p></article>
+      <article class="approach-card"><span class="card-index">05 / GUIDANCE</span><h3>Stay involved with curiosity</h3><p>Take an active, age-appropriate interest in how your child uses technology.</p></article>
+      <article class="approach-card"><span class="card-index">06 / CONNECTION</span><h3>Protect time to be together</h3><p>Create family moments that strengthen your connection, on and away from screens.</p></article>
     </div>
 
     <p class="gentle-note">You do not have to change everything at once. Start with one small step that feels right at home.</p>
@@ -889,17 +1046,17 @@
   <div class="wrap timer-layout">
     <div class="timer-circle" aria-label="Illustrative counter, not screen-time data or a deadline">
       <div class="timer-face">
-        <strong class="timer-display" id="timer-display" role="timer">02:20:15</strong>
+        <strong class="timer-display" id="timer-display">02:20:15</strong>
         <span class="timer-label">hours : minutes : seconds</span>
       </div>
     </div>
 
     <div class="timer-copy">
-      <p class="eyebrow"><span class="dot"></span> A gentle reminder</p>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> A gentle reminder</p>
       <h2 id="timer-title">Time keeps moving.<br><em>Small habits grow over time.</em></h2>
-      <p>Every day brings new chances to learn, play, explore and discover. When screens take up more space, other experiences can slip into the background.</p>
-      <p>You do not need to wait for a problem to appear before getting involved in your child's digital life. A conversation, a shared activity or one small change can be a place to begin.</p>
-      <p class="timer-disclaimer">This visual counter starts at 02:20:15 and moves forward. It does not measure your child's screen time or risk. It is not a promotion or a deadline.</p>
+      <p class="body-copy">Every day brings new chances to learn, play, explore and discover. When screens take up more space, other experiences can slip into the background.</p>
+      <p class="body-copy">A conversation, a shared activity or one small change can be a place to begin.</p>
+      <p class="body-copy timer-disclaimer">This visual counter starts at 02:20:15 and moves forward. It does not measure your child's screen time or risk. It is not a promotion or a deadline.</p>
       <a href="#guide">See how the guide may help ↗</a>
     </div>
   </div>
@@ -908,7 +1065,7 @@
 <section class="section offer" id="guide">
   <div class="wrap offer-layout">
     <div class="offer-copy">
-      <p class="eyebrow"><span class="dot"></span> A thoughtful first step</p>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> A thoughtful first step</p>
       <h2>A more balanced relationship with technology can start at home.</h2>
       <p>Less Screen, More Play offers practical guidance to help you review digital habits, set boundaries and make more room for play and interaction. Created for parents and caregivers of children aged 3–10.</p>
       <ul class="offer-points">
@@ -920,56 +1077,38 @@
 
     <div class="offer-card">
       <div class="guide-art">
-        <span class="guide-art-sun"></span>
-        <div class="guide-art-copy">
+        <div>
           <small>A PRACTICAL FAMILY GUIDE</small>
           <strong>Less Screen,<br>More Play</strong>
-          <i>more room for connection</i>
+          <i>More room for connection</i>
         </div>
       </div>
-
       <div class="offer-card-body">
-        <span class="digital-label"><span class="digital-dot"></span> Digital guide</span>
+        <span class="digital-label">Digital guide</span>
         <h3>Start at your own pace.</h3>
         <p class="price"><strong>$5.99 USD</strong><span>suggested starting price</span></p>
-        <p class="price-note">Suggested price, subject to confirmation on the checkout platform. Access details will be provided by Tutora.</p>
+        <p class="price-note">Suggested price, subject to confirmation at checkout. Access details will be provided by Tutora.</p>
         <a class="button button-offer" href="#guide" data-purchase>Explore the guide ↗</a>
-        <p class="secure-note">Digital access through the checkout platform</p>
       </div>
     </div>
   </div>
-  <p class="wrap offer-disclaimer">This is an educational resource for parents and caregivers. It does not replace parental supervision or guarantee protection from every online risk.</p>
+  <p class="wrap offer-disclaimer">This educational resource does not replace parental supervision or guarantee protection from every online risk.</p>
 </section>
 
 <section class="section faq" id="questions">
   <div class="wrap faq-layout">
-    <div class="faq-intro">
-      <p class="eyebrow"><span class="dot"></span> Before you begin</p>
+    <div>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> Before you begin</p>
       <h2>Frequently asked <em>questions.</em></h2>
-      <p>A balanced approach starts with clear information and realistic expectations.</p>
+      <p class="intro">Clear information and realistic expectations are a good place to start.</p>
     </div>
 
     <div class="faq-list">
-      <details class="faq-item">
-        <summary>What ages is this guide designed for?</summary>
-        <p>It was created for parents and caregivers of children aged 3–10.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Is the goal to stop my child using the internet?</summary>
-        <p>No. The goal is to help families build more balanced habits and encourage age-appropriate, guided use of technology.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Does the guide protect children from every online risk?</summary>
-        <p>No. It does not replace parental supervision or guarantee protection from every online risk.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Do I need to remove screens completely?</summary>
-        <p>No. The aim is to find a balance between technology, play, everyday activities and family interaction.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How do I receive the guide?</summary>
-        <p>It is a digital product. Access and delivery details will be provided on the Tutora checkout page.</p>
-      </details>
+      <details class="faq-item"><summary>What ages is this guide designed for?</summary><p>It was created for parents and caregivers of children aged 3–10.</p></details>
+      <details class="faq-item"><summary>Is the goal to stop my child using the internet?</summary><p>No. The goal is to help families build balanced habits and encourage age-appropriate, guided use of technology.</p></details>
+      <details class="faq-item"><summary>Does the guide protect children from every online risk?</summary><p>No. It does not replace parental supervision or guarantee protection from every online risk.</p></details>
+      <details class="faq-item"><summary>Do I need to remove screens completely?</summary><p>No. The aim is to find a balance between technology, play, everyday activities and family interaction.</p></details>
+      <details class="faq-item"><summary>How do I receive the guide?</summary><p>It is a digital product. Access and delivery details will be provided on the Tutora checkout page.</p></details>
     </div>
   </div>
 </section>
@@ -981,16 +1120,12 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="wrap footer-main">
     <a class="brand" href="#top" aria-label="Less Screen, More Play home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none">
-          <path d="M24 5C15.8 10.1 11 16.1 11 23.2c0 7.2 5.1 12.3 12.1 12.3 7.3 0 13.4-5.5 13.4-13.6-5.6-11.8-3.7-11.8-12.5-16.9Z" fill="currentColor"/>
-          <path d="M14 40c4.7-8.7 10.8-13.6 20.1-17.3" stroke="#F7F5EC" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="m22 18 9 5-9 5V18Z" fill="#F7F5EC"/>
-        </svg>
-      </span>
+      <span class="brand-mark" aria-hidden="true">✳</span>
       <span class="brand-name">Less Screen <span>More Play</span></span>
     </a>
     <p>Healthier digital habits. More guidance. More time together.</p>
@@ -1005,17 +1140,17 @@
 <dialog class="purchase-dialog" id="purchase-dialog">
   <button class="dialog-close" type="button" aria-label="Close">×</button>
   <h2>The checkout link is not set yet.</h2>
-  <p>Add the real Tutora checkout address to <code>TUTORA_CHECKOUT_URL</code> in the JavaScript below.</p>
+  <p>Add your real Tutora checkout URL to <code>TUTORA_CHECKOUT_URL</code> in the script below.</p>
   <button class="button dialog-ok" type="button">Got it</button>
 </dialog>
 
 <script>
-  /* Add the real HTTPS Tutora checkout URL when it is available. */
+  /* Add the real HTTPS Tutora checkout URL when available. */
   const TUTORA_CHECKOUT_URL = "";
 
-  /* Illustrative only: not screen-time data and not a sales deadline. */
+  /* Visual counter only: it does not measure screen time or risk. */
+  let elapsedSeconds = (2 * 60 * 60) + (20 * 60) + 15;
   const timerDisplay = document.querySelector("#timer-display");
-  let timerSeconds = (2 * 60 * 60) + (20 * 60) + 15;
 
   function formatTimer(totalSeconds) {
     const hours = Math.floor(totalSeconds / 3600);
@@ -1027,34 +1162,34 @@
   }
 
   if (timerDisplay) {
-    timerDisplay.textContent = formatTimer(timerSeconds);
+    timerDisplay.textContent = formatTimer(elapsedSeconds);
     window.setInterval(() => {
-      timerSeconds += 1;
-      timerDisplay.textContent = formatTimer(timerSeconds);
+      elapsedSeconds += 1;
+      timerDisplay.textContent = formatTimer(elapsedSeconds);
     }, 1000);
   }
 
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector("#main-nav");
-  const purchaseDialog = document.querySelector("#purchase-dialog");
 
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
-      const open = menuToggle.getAttribute("aria-expanded") === "true";
-      menuToggle.setAttribute("aria-expanded", String(!open));
-      menuToggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
-      mainNav.classList.toggle("is-open", !open);
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open menu" : "Close menu");
+      mainNav.classList.toggle("is-open", !isOpen);
     });
 
     mainNav.querySelectorAll("a").forEach(link => {
-      
-        link.addEventListener("click", () => {
+      link.addEventListener("click", () => {
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open menu");
         mainNav.classList.remove("is-open");
       });
     });
   }
+
+  const purchaseDialog = document.querySelector("#purchase-dialog");
 
   document.querySelectorAll("[data-purchase]").forEach(link => {
     if (/^https:\/\//i.test(TUTORA_CHECKOUT_URL.trim())) {
@@ -1064,20 +1199,23 @@
     } else {
       link.addEventListener("click", event => {
         event.preventDefault();
-        if (purchaseDialog?.showModal) purchaseDialog.showModal();
+        if (purchaseDialog && purchaseDialog.showModal) {
+          purchaseDialog.showModal();
+        }
       });
     }
   });
 
-  function closePurchaseDialog() {
-    if (purchaseDialog?.open) purchaseDialog.close();
+  function closeDialog() {
+    if (purchaseDialog && purchaseDialog.open) purchaseDialog.close();
   }
 
-  document.querySelector(".dialog-close")?.addEventListener("click", closePurchaseDialog);
-  document.querySelector(".dialog-ok")?.addEventListener("click", closePurchaseDialog);
+  document.querySelector(".dialog-close")?.addEventListener("click", closeDialog);
+    document.querySelector(".dialog-close")?.addEventListener("click", closeDialog);
+  document.querySelector(".dialog-ok")?.addEventListener("click", closeDialog);
 
   purchaseDialog?.addEventListener("click", event => {
-    if (event.target === purchaseDialog) closePurchaseDialog();
+    if (event.target === purchaseDialog) closeDialog();
   });
 
   const year = document.querySelector("#current-year");
